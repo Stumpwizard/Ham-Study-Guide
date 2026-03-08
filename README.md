@@ -4,18 +4,14 @@ This project contains the ham radio operator study guide deliverables for Window
 
 ## Files
 
-- `study-guide.html`: self-contained browser entry point for GitHub Pages and local browser use
-- `src/ham-study.css`: browser app styling
-- `src/ham-study-app.js`: browser app logic, exams, and OpenAI chatbox
+- `study-guide.html`: self-contained browser version for Windows, macOS, and mobile browsers
 - `ham-radio-study-guide.md`: Markdown study guide source
 - `Stumpwizards Ham Study Guide.exe`: Windows desktop build
 - `HamRadioStudyGuideApp.cs`: WinForms source for the Windows build
 
 ## Browser Use
 
-Open `study-guide.html` in a modern browser. It includes the study content, practice exams, and an OpenAI-powered chatbox for study questions.
-
-The chatbox is GitHub Pages compatible because it runs entirely in the browser. Enter your own OpenAI API key in the app; it is stored only in local browser storage on that device.
+Open `study-guide.html` in a modern browser. It includes the study content, an Ohm's Law graphic, and randomized 20-question exams drawn from a 100-question bank.
 
 ## GitHub Pages
 

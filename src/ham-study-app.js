@@ -178,20 +178,61 @@ const exams = [
 ];
 
 const guideTarget = document.querySelector("[data-guide-content]");
+const tabButtons = Array.from(document.querySelectorAll("[data-tab-target]"));
+const tabPanels = Array.from(document.querySelectorAll("[data-tab-panel]"));
+let lastTouchHandledAt = 0;
+
 guideTarget.innerHTML = guideContent;
-
-const tabButtons = [...document.querySelectorAll("[data-tab-target]")];
-const tabPanels = [...document.querySelectorAll("[data-tab-panel]")];
-
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const target = button.dataset.tabTarget;
-    tabButtons.forEach((item) => item.classList.toggle("is-active", item === button));
-    tabPanels.forEach((panel) => panel.classList.toggle("is-active", panel.dataset.tabPanel === target));
-  });
-});
-
 exams.forEach(renderExam);
+
+bindTapSupport();
+
+function bindTapSupport() {
+  document.addEventListener("pointerup", handleAction, { passive: false });
+  document.addEventListener("click", handleAction, { passive: false });
+}
+
+function handleAction(event) {
+  if (event.type === "click" && Date.now() - lastTouchHandledAt < 700) {
+    return;
+  }
+
+  const button = event.target.closest("button[data-tab-target], button[data-score-button], button[data-reset-button]");
+  if (!button) {
+    return;
+  }
+
+  if (event.type === "pointerup") {
+    lastTouchHandledAt = Date.now();
+  }
+
+  event.preventDefault();
+
+  if (button.hasAttribute("data-tab-target")) {
+    activateTab(button.dataset.tabTarget, button);
+    return;
+  }
+
+  const panel = button.closest("[data-tab-panel]");
+  const exam = exams.find((item) => item.id === panel.dataset.tabPanel);
+  if (!panel || !exam) {
+    return;
+  }
+
+  if (button.hasAttribute("data-score-button")) {
+    scoreExam(panel, exam);
+    return;
+  }
+
+  if (button.hasAttribute("data-reset-button")) {
+    resetExam(panel);
+  }
+}
+
+function activateTab(target, activeButton) {
+  tabButtons.forEach((item) => item.classList.toggle("is-active", item === activeButton));
+  tabPanels.forEach((panel) => panel.classList.toggle("is-active", panel.dataset.tabPanel === target));
+}
 
 function renderExam(exam) {
   const panel = document.querySelector(`[data-tab-panel="${exam.id}"]`);
@@ -203,8 +244,8 @@ function renderExam(exam) {
           <p>${exam.description}</p>
         </div>
         <div class="exam-actions">
-          <button class="action-button primary" type="button" data-score-button>Score Exam</button>
-          <button class="action-button secondary" type="button" data-reset-button>Reset</button>
+          <button class="action-button primary" type="button" data-score-button="true">Score Exam</button>
+          <button class="action-button secondary" type="button" data-reset-button="true">Reset</button>
           <output class="score-output" data-score-output>20 questions</output>
         </div>
       </div>
@@ -234,13 +275,10 @@ function renderExam(exam) {
     `;
     list.appendChild(fieldset);
   });
-
-  panel.querySelector("[data-score-button]").addEventListener("click", () => scoreExam(panel, exam));
-  panel.querySelector("[data-reset-button]").addEventListener("click", () => resetExam(panel));
 }
 
 function scoreExam(panel, exam) {
-  const questionCards = [...panel.querySelectorAll(".question-card")];
+  const questionCards = Array.from(panel.querySelectorAll(".question-card"));
   let answered = 0;
   let correct = 0;
 
@@ -290,219 +328,4 @@ function resetExam(panel) {
 
 function q(prompt, answer, options) {
   return { prompt, answer, options };
-}
-
-const apiKeyStorageKey = "hamStudyGuide.openAiApiKey";
-const modelStorageKey = "hamStudyGuide.openAiModel";
-const defaultModel = "gpt-4.1-mini";
-const apiKeyInput = document.querySelector("[data-api-key-input]");
-const modelInput = document.querySelector("[data-model-input]");
-const saveKeyButton = document.querySelector("[data-save-key-button]");
-const clearKeyButton = document.querySelector("[data-clear-key-button]");
-const clearChatButton = document.querySelector("[data-clear-chat-button]");
-const sendChatButton = document.querySelector("[data-send-chat-button]");
-const chatInput = document.querySelector("[data-chat-input]");
-const chatLog = document.querySelector("[data-chat-log]");
-const chatStatus = document.querySelector("[data-chat-status]");
-const chatHistory = [];
-const studyReference = buildStudyReference();
-const studySystemPrompt = [
-  "You are a ham radio study assistant for this static study guide application.",
-  "Answer questions using the supplied study guide and exam bank as the primary source of truth.",
-  "If the answer is not directly supported by the supplied material, say that clearly and stay cautious.",
-  "Keep responses concise, practical, and study-focused.",
-  "Do not invent FCC rules, formulas, or privileges that are not supported by the provided material.",
-  "Reference material:",
-  studyReference
-].join("\n\n");
-let chatRequestInFlight = false;
-
-initializeChat();
-renderChatMessage("system", "Ask a question about the study material, formulas, operating practice, or the exam bank.");
-
-function initializeChat() {
-  if (!apiKeyInput || !modelInput || !chatInput || !chatLog || !chatStatus) {
-    return;
-  }
-
-  apiKeyInput.value = window.localStorage.getItem(apiKeyStorageKey) || "";
-  modelInput.value = window.localStorage.getItem(modelStorageKey) || defaultModel;
-
-  saveKeyButton.addEventListener("click", () => {
-    window.localStorage.setItem(apiKeyStorageKey, apiKeyInput.value.trim());
-    window.localStorage.setItem(modelStorageKey, modelInput.value.trim() || defaultModel);
-    setChatStatus(apiKeyInput.value.trim() ? "API key saved in this browser." : "No API key entered.");
-  });
-
-  clearKeyButton.addEventListener("click", () => {
-    apiKeyInput.value = "";
-    window.localStorage.removeItem(apiKeyStorageKey);
-    setChatStatus("Saved API key removed from this browser.");
-  });
-
-  clearChatButton.addEventListener("click", () => {
-    chatHistory.length = 0;
-    chatLog.innerHTML = "";
-    renderChatMessage("system", "Chat cleared. Ask a fresh question about the study material.");
-    setChatStatus("Conversation cleared.");
-  });
-
-  modelInput.addEventListener("change", () => {
-    window.localStorage.setItem(modelStorageKey, modelInput.value.trim() || defaultModel);
-  });
-
-  sendChatButton.addEventListener("click", submitChatQuestion);
-  chatInput.addEventListener("keydown", (event) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-      event.preventDefault();
-      submitChatQuestion();
-    }
-  });
-}
-
-async function submitChatQuestion() {
-  const prompt = chatInput.value.trim();
-  const apiKey = apiKeyInput.value.trim();
-  const model = modelInput.value.trim() || defaultModel;
-
-  if (!apiKey) {
-    setChatStatus("Enter an OpenAI API key before sending a question.");
-    apiKeyInput.focus();
-    return;
-  }
-
-  if (!prompt) {
-    setChatStatus("Enter a study question first.");
-    chatInput.focus();
-    return;
-  }
-
-  if (chatRequestInFlight) {
-    return;
-  }
-
-  chatRequestInFlight = true;
-  setChatBusy(true);
-  window.localStorage.setItem(apiKeyStorageKey, apiKey);
-  window.localStorage.setItem(modelStorageKey, model);
-
-  renderChatMessage("user", prompt);
-  chatHistory.push({ role: "user", text: prompt });
-  chatInput.value = "";
-  setChatStatus("Asking OpenAI...");
-
-  try {
-    const response = await window.fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        max_output_tokens: 400,
-        input: buildChatInput(prompt)
-      })
-    });
-
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(readApiError(data) || "OpenAI request failed.");
-    }
-
-    const answer = extractResponseText(data);
-    if (!answer) {
-      throw new Error("OpenAI returned no answer text.");
-    }
-
-    renderChatMessage("assistant", answer);
-    chatHistory.push({ role: "assistant", text: answer });
-    setChatStatus("Answer ready. Ask a follow-up or clear the chat to start over.");
-  } catch (error) {
-    renderChatMessage("assistant", `Request failed: ${error.message}`);
-    setChatStatus("OpenAI request failed. Check your API key, model, network access, or account limits.");
-  } finally {
-    chatRequestInFlight = false;
-    setChatBusy(false);
-    chatInput.focus();
-  }
-}
-
-function setChatBusy(isBusy) {
-  sendChatButton.disabled = isBusy;
-  saveKeyButton.disabled = isBusy;
-  clearKeyButton.disabled = isBusy;
-  clearChatButton.disabled = isBusy;
-  chatInput.disabled = isBusy;
-}
-
-function buildChatInput(prompt) {
-  const transcript = [
-    {
-      role: "system",
-      content: [{ type: "input_text", text: studySystemPrompt }]
-    }
-  ];
-
-  chatHistory.forEach((message) => {
-    transcript.push({
-      role: message.role,
-      content: [{ type: "input_text", text: message.text }]
-    });
-  });
-
-  transcript.push({
-    role: "user",
-    content: [{ type: "input_text", text: prompt }]
-  });
-
-  return transcript;
-}
-
-function renderChatMessage(role, text) {
-  const message = document.createElement("div");
-  message.className = `chat-message ${role}`;
-  message.textContent = text;
-  chatLog.appendChild(message);
-  chatLog.scrollTop = chatLog.scrollHeight;
-}
-
-function setChatStatus(message) {
-  chatStatus.textContent = message;
-}
-
-function extractResponseText(data) {
-  if (typeof data.output_text === "string" && data.output_text.trim()) {
-    return data.output_text.trim();
-  }
-
-  if (!Array.isArray(data.output)) {
-    return "";
-  }
-
-  return data.output
-    .flatMap((item) => Array.isArray(item.content) ? item.content : [])
-    .filter((part) => part.type === "output_text" && typeof part.text === "string")
-    .map((part) => part.text)
-    .join("\n")
-    .trim();
-}
-
-function readApiError(data) {
-  return data && data.error && typeof data.error.message === "string" ? data.error.message : "";
-}
-
-function buildStudyReference() {
-  const plainGuide = guideContent.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  const allQuestions = exams.flatMap((exam) => exam.questions);
-  const questionLines = allQuestions.map((question, index) => {
-    const answers = Object.entries(question.options).map(([key, value]) => `${key}. ${value}`).join(" | ");
-    return `${index + 1}. ${question.prompt} Correct: ${question.answer}. ${question.options[question.answer]} Choices: ${answers}`;
-  });
-
-  return [
-    `Guide summary: ${plainGuide}`,
-    "Exam bank:",
-    questionLines.join("\n")
-  ].join("\n\n");
 }
