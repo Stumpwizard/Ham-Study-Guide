@@ -118,6 +118,33 @@
                 <div class="ohms-law-chip">R = V / I</div>
               </div>
             </figure>
+            <section class="ohms-law-calculator" data-ohms-calculator>
+              <h4>Ohm's Law Calculator</h4>
+              <p>Enter any two values to solve the other electrical quantities.</p>
+              <div class="ohms-law-fields">
+                <div class="ohms-law-field">
+                  <label for="ohms-voltage">Voltage (V)</label>
+                  <input id="ohms-voltage" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="voltage" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-current">Current (I)</label>
+                  <input id="ohms-current" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="current" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-resistance">Resistance (R)</label>
+                  <input id="ohms-resistance" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="resistance" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-power">Power (P)</label>
+                  <input id="ohms-power" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="power" />
+                </div>
+              </div>
+              <div class="ohms-law-actions">
+                <button class="action-button primary" type="button" data-ohms-action="solve">Calculate</button>
+                <button class="action-button secondary" type="button" data-ohms-action="clear">Clear</button>
+              </div>
+              <p class="ohms-law-result" data-ohms-result>Enter two known values such as voltage and resistance.</p>
+            </section>
             <h3>Components and Circuits</h3>
             <ul>
               <li>Resistors limit current.</li>
@@ -150,34 +177,6 @@
               <li>Read words like best, most, and primary carefully.</li>
               <li>If two answers seem close, choose the safer or more compliant one.</li>
             </ol>
-
-            <section class="ohms-law-calculator" data-ohms-calculator>
-              <h4>Ohm's Law Calculator</h4>
-              <p>Enter any two values to solve the other electrical quantities.</p>
-              <div class="ohms-law-fields">
-                <div class="ohms-law-field">
-                  <label for="ohms-voltage">Voltage (V)</label>
-                  <input id="ohms-voltage" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="voltage" />
-                </div>
-                <div class="ohms-law-field">
-                  <label for="ohms-current">Current (I)</label>
-                  <input id="ohms-current" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="current" />
-                </div>
-                <div class="ohms-law-field">
-                  <label for="ohms-resistance">Resistance (R)</label>
-                  <input id="ohms-resistance" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="resistance" />
-                </div>
-                <div class="ohms-law-field">
-                  <label for="ohms-power">Power (P)</label>
-                  <input id="ohms-power" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="power" />
-                </div>
-              </div>
-              <div class="ohms-law-actions">
-                <button class="action-button primary" type="button" data-ohms-action="solve">Calculate</button>
-                <button class="action-button secondary" type="button" data-ohms-action="clear">Clear</button>
-              </div>
-              <p class="ohms-law-result" data-ohms-result>Enter two known values such as voltage and resistance.</p>
-            </section>
           </article>
 
           <aside class="card summary-panel">
