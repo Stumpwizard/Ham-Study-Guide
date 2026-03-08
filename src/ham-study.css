@@ -304,9 +304,14 @@ h3 {
   margin-bottom: 0;
 }
 
+.exam-meta {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
 .exam-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
   align-items: stretch;
 }
@@ -334,6 +339,16 @@ h3 {
   grid-column: 1 / -1;
   color: var(--muted);
   line-height: 1.4;
+}
+
+.score-output.is-pass {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.score-output.is-fail {
+  color: var(--danger);
+  font-weight: 700;
 }
 
 .question-list {
@@ -462,3 +477,4 @@ h3 {
     padding: 16px;
   }
 }
+

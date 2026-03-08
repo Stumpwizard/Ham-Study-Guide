@@ -1,8 +1,35 @@
-const questionCountPerExam = 20;
+const questionCountPerExam = 35;
+const maxIncorrectToPass = 9;
+const passingCorrectCount = questionCountPerExam - maxIncorrectToPass;
+const defaultRulesQuestionTarget = 12;
+const rulesKeywords = [
+  "fcc",
+  "call sign",
+  "identify",
+  "identification",
+  "privileges",
+  "control operator",
+  "interference",
+  "band plan",
+  "broadcast",
+  "one-way",
+  "one way",
+  "business",
+  "pecuniary",
+  "encoded",
+  "cipher",
+  "third party",
+  "third-party",
+  "profane",
+  "obscene",
+  "indecent"
+];
 const tabButtons = Array.from(document.querySelectorAll("[data-tab-target]"));
 const tabPanels = Array.from(document.querySelectorAll("[data-tab-panel]"));
 let defaultScoreText = "";
 let examState = {};
+let questionBank = [];
+let examConfigsById = {};
 
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => activateTab(button.dataset.tabTarget));
@@ -15,7 +42,9 @@ initializeApp();
 async function initializeApp() {
   try {
     const studyData = await readStudyData();
-    defaultScoreText = `Random ${questionCountPerExam} questions from ${studyData.questions.length} available`;
+    questionBank = studyData.questions;
+    examConfigsById = Object.fromEntries(studyData.examConfigs.map((config) => [config.id, config]));
+    defaultScoreText = buildDefaultScoreText(questionBank.length);
     examState = createExamSets(studyData.examConfigs, studyData.questions);
 
     studyData.examConfigs.forEach((config) => {
@@ -51,6 +80,10 @@ function validateStudyData(parsed) {
   }
 }
 
+function buildDefaultScoreText(totalQuestions) {
+  return `Random ${questionCountPerExam} questions from ${totalQuestions} available | Pass with ${passingCorrectCount}/${questionCountPerExam} or better`;
+}
+
 function renderLoadError() {
   const panel = document.querySelector('[data-tab-panel="guide"]');
   if (!panel) {
@@ -67,21 +100,60 @@ function renderLoadError() {
   `;
 }
 
-function createExamSets(examConfigs, questionBank) {
-  const requiredQuestions = examConfigs.length * questionCountPerExam;
-  if (questionBank.length < requiredQuestions) {
-    throw new Error(`Expected at least ${requiredQuestions} questions, received ${questionBank.length}.`);
+function createExamSets(examConfigs, allQuestions) {
+  if (allQuestions.length < questionCountPerExam) {
+    throw new Error(`Expected at least ${questionCountPerExam} questions, received ${allQuestions.length}.`);
   }
 
-  const pool = shuffleArray(questionBank.slice());
   const state = {};
-
-  examConfigs.forEach((config, index) => {
-    const start = index * questionCountPerExam;
-    state[config.id] = pool.slice(start, start + questionCountPerExam);
+  examConfigs.forEach((config) => {
+    state[config.id] = buildExamQuestionSet(allQuestions, config);
   });
-
   return state;
+}
+
+function buildExamQuestionSet(allQuestions, config) {
+  const rulesQuestions = shuffleArray(allQuestions.filter(isRulesQuestion));
+  const otherQuestions = shuffleArray(allQuestions.filter((question) => !isRulesQuestion(question)));
+  const fallbackQuestions = shuffleArray(allQuestions.slice());
+  const rulesTarget = Math.min(config.rulesTarget ?? defaultRulesQuestionTarget, questionCountPerExam);
+  const selected = [];
+  const usedPrompts = new Set();
+
+  collectQuestions(selected, usedPrompts, rulesQuestions, rulesTarget);
+  collectQuestions(selected, usedPrompts, otherQuestions, questionCountPerExam - selected.length);
+  collectQuestions(selected, usedPrompts, fallbackQuestions, questionCountPerExam - selected.length);
+
+  if (selected.length < questionCountPerExam) {
+    throw new Error(`Unable to build a ${questionCountPerExam}-question exam from the current question bank.`);
+  }
+
+  return shuffleArray(selected.slice());
+}
+
+function collectQuestions(selected, usedPrompts, candidates, neededCount) {
+  if (neededCount <= 0) {
+    return;
+  }
+
+  for (const question of candidates) {
+    if (selected.length >= questionCountPerExam || neededCount <= 0 || usedPrompts.has(question.prompt)) {
+      continue;
+    }
+
+    selected.push(question);
+    usedPrompts.add(question.prompt);
+    neededCount -= 1;
+  }
+}
+
+function isRulesQuestion(question) {
+  if (question.category === "fcc-rules") {
+    return true;
+  }
+
+  const promptAndOptions = `${question.prompt} ${Object.values(question.options).join(" ")}`.toLowerCase();
+  return rulesKeywords.some((keyword) => promptAndOptions.includes(keyword));
 }
 
 function shuffleArray(items) {
@@ -119,10 +191,12 @@ function renderExam(config, questions) {
         <div>
           <h2>${config.title}</h2>
           <p>${config.description}</p>
+          <p class="exam-meta">${questionCountPerExam} random questions with extra FCC rules coverage. Pass with no more than ${maxIncorrectToPass} missed.</p>
         </div>
         <div class="exam-actions">
           <button class="action-button primary" type="button" data-exam-action="score">Score Exam</button>
-          <button class="action-button secondary" type="button" data-exam-action="reset">Reset</button>
+          <button class="action-button secondary" type="button" data-exam-action="reset">Reset Answers</button>
+          <button class="action-button secondary" type="button" data-exam-action="regenerate">New Random Exam</button>
           <output class="score-output" data-score-output aria-live="polite">${defaultScoreText}</output>
         </div>
       </div>
@@ -158,8 +232,9 @@ function handleClick(event) {
   const examButton = event.target.closest("[data-exam-action]");
   if (examButton) {
     const panel = examButton.closest("[data-tab-panel]");
-    const questions = examState[panel?.dataset.tabPanel];
-    if (!panel || !questions) {
+    const examId = panel?.dataset.tabPanel;
+    const questions = examState[examId];
+    if (!panel || !examId || !questions) {
       return;
     }
 
@@ -170,6 +245,17 @@ function handleClick(event) {
 
     if (examButton.dataset.examAction === "reset") {
       resetExam(panel);
+      return;
+    }
+
+    if (examButton.dataset.examAction === "regenerate") {
+      const config = examConfigsById[examId];
+      if (!config) {
+        return;
+      }
+
+      examState[examId] = buildExamQuestionSet(questionBank, config);
+      renderExam(config, examState[examId]);
       return;
     }
   }
@@ -220,9 +306,14 @@ function scoreExam(panel, questions) {
     feedback.textContent = `Missed. Correct answer: ${correctText}`;
   });
 
+  const incorrect = questions.length - correct;
   const percent = Math.round((correct / questions.length) * 100);
-  panel.querySelector("[data-score-output]").textContent =
-    `Answered ${answered}/${questions.length} | Score ${correct}/${questions.length} | ${percent}%`;
+  const passed = incorrect <= maxIncorrectToPass;
+  const scoreOutput = panel.querySelector("[data-score-output]");
+  scoreOutput.classList.remove("is-pass", "is-fail");
+  scoreOutput.classList.add(passed ? "is-pass" : "is-fail");
+  scoreOutput.textContent =
+    `${passed ? "PASS" : "FAIL"} | Score ${correct}/${questions.length} | Incorrect ${incorrect}/${questions.length} | Answered ${answered}/${questions.length} | ${percent}%`;
 }
 
 function resetExam(panel) {
@@ -235,7 +326,9 @@ function resetExam(panel) {
     feedback.textContent = "";
   });
 
-  panel.querySelector("[data-score-output]").textContent = defaultScoreText;
+  const scoreOutput = panel.querySelector("[data-score-output]");
+  scoreOutput.classList.remove("is-pass", "is-fail");
+  scoreOutput.textContent = defaultScoreText;
 }
 
 function solveOhmsLaw() {
@@ -243,7 +336,7 @@ function solveOhmsLaw() {
     voltage: readOhmsValue("voltage"),
     current: readOhmsValue("current"),
     resistance: readOhmsValue("resistance"),
-    power: readOhmsValue("power"),
+    power: readOhmsValue("power")
   };
   const result = document.querySelector("[data-ohms-result]");
   const knownValues = Object.keys(values).filter((key) => values[key] !== null);
@@ -353,6 +446,6 @@ function finalizeOhmsSolution(voltage, current, resistance, power) {
     voltage,
     current,
     resistance,
-    power,
+    power
   };
 }

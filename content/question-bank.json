@@ -1,121 +1,1463 @@
 {
-  "examConfigs": [
-    {"id":"exam-1","title":"Technician Exam","description":"Technician license review covering rules, repeaters, electronics basics, and station practice."},
-    {"id":"exam-2","title":"General Exam","description":"General license review focused on HF operation, propagation, circuits, and station setup."},
-    {"id":"exam-3","title":"Amateur Extra Exam","description":"Amateur Extra style mixed review using the full question bank for broad concept practice."}
-  ],
-  "questions": [
-    {"prompt":"What is the main purpose of a repeater?","answer":"B","options":{"A":"Encrypt traffic","B":"Extend communication range","C":"Reduce current draw","D":"Replace the antenna"}},
-    {"prompt":"What does your amateur call sign do?","answer":"B","options":{"A":"Tunes the antenna","B":"Identifies your station","C":"Measures output power","D":"Selects the band"}},
-    {"prompt":"What does V = I x R describe?","answer":"C","options":{"A":"Polarization","B":"Velocity factor","C":"Ohm's Law","D":"SWR"}},
-    {"prompt":"Which mode is common on local VHF/UHF repeaters?","answer":"A","options":{"A":"FM","B":"SSB","C":"CW only","D":"AM only"}},
-    {"prompt":"If frequency increases, wavelength does what?","answer":"B","options":{"A":"Increases","B":"Decreases","C":"Stays constant","D":"Becomes DC"}},
-    {"prompt":"What does SWR primarily indicate?","answer":"C","options":{"A":"Battery capacity","B":"Audio deviation","C":"Antenna-system match quality","D":"Cable age"}},
-    {"prompt":"Which practice is best before transmitting?","answer":"B","options":{"A":"Increase power","B":"Listen first","C":"Disable mic gain","D":"Shift bands"}},
-    {"prompt":"A capacitor stores energy in what?","answer":"C","options":{"A":"Magnetic field","B":"Rotating field","C":"Electric field","D":"Sound wave"}},
-    {"prompt":"Which item most directly protects against overcurrent?","answer":"A","options":{"A":"Fuse","B":"Microphone","C":"Wattmeter","D":"Dummy load"}},
-    {"prompt":"Which band type is associated with long-distance skywave communication?","answer":"A","options":{"A":"HF","B":"Audio","C":"Microwave oven only","D":"DC"}},
-    {"prompt":"What is the control operator responsible for?","answer":"B","options":{"A":"Station appearance only","B":"Proper station operation","C":"Internet speed","D":"Weather forecasting"}},
-    {"prompt":"What is the safest action when installing an outdoor antenna?","answer":"C","options":{"A":"Place it close to power lines","B":"Work alone in a storm","C":"Keep clear of power lines","D":"Use damaged feed line"}},
-    {"prompt":"Power is measured in what unit?","answer":"C","options":{"A":"Amperes","B":"Ohms","C":"Watts","D":"Farads"}},
-    {"prompt":"A diode primarily does what?","answer":"B","options":{"A":"Amplifies all signals","B":"Allows current mainly one way","C":"Stores RF in the mast","D":"Converts coax to ladder line"}},
-    {"prompt":"Why might a repeater require a CTCSS tone?","answer":"B","options":{"A":"Reduce lightning risk","B":"Access the repeater","C":"Calculate wavelength","D":"Improve Morse speed"}},
-    {"prompt":"Which statement about low SWR is best?","answer":"C","options":{"A":"Guarantees worldwide contacts","B":"Means ideal antenna height","C":"Usually indicates a better impedance match","D":"Eliminates feed line loss"}},
-    {"prompt":"What is a major use of phonetics on the air?","answer":"B","options":{"A":"Increase transmitter power","B":"Make call signs easier to copy","C":"Hide station identity","D":"Change modulation type"}},
-    {"prompt":"Which quantity opposes current flow?","answer":"B","options":{"A":"Frequency","B":"Resistance","C":"Velocity factor","D":"Modulation index"}},
-    {"prompt":"What should you do if you cause interference?","answer":"C","options":{"A":"Ignore it","B":"Continue until two complaints","C":"Investigate and correct it","D":"Move randomly without listening"}},
-    {"prompt":"What is one likely risk of replacing a fuse with too high a rating?","answer":"C","options":{"A":"Better audio","B":"Improved antenna match","C":"Equipment damage or fire","D":"Lower RF exposure"}},
-    {"prompt":"Why upgrade from Technician to General?","answer":"B","options":{"A":"No antenna needed","B":"Broader HF privileges","C":"Avoid ID","D":"Use commercial frequencies"}},
-    {"prompt":"What often changes HF propagation from day to night?","answer":"B","options":{"A":"Display color","B":"Ionospheric conditions","C":"Microphone brand","D":"Label size"}},
-    {"prompt":"Which voice mode is commonly used on HF for bandwidth efficiency?","answer":"A","options":{"A":"SSB","B":"Wideband FM","C":"Analog TV","D":"Tone burst"}},
-    {"prompt":"One advantage of CW is what?","answer":"B","options":{"A":"No skill required","B":"Works under weak-signal conditions","C":"Always carries images","D":"Uses more bandwidth"}},
-    {"prompt":"What usually happens to coax loss as frequency increases?","answer":"B","options":{"A":"Goes to zero","B":"Generally increases","C":"Becomes negative","D":"Depends on mic gain"}},
-    {"prompt":"Why is a band plan useful?","answer":"B","options":{"A":"Replaces FCC rules","B":"Helps use accepted subbands","C":"Sets utility rates","D":"Tunes the antenna"}},
-    {"prompt":"What is a dummy load used for?","answer":"B","options":{"A":"Stronger signal","B":"Test without significant radiation","C":"Improve mic tone","D":"Replace a fuse"}},
-    {"prompt":"Digital modes can be used for what?","answer":"B","options":{"A":"Government only","B":"Text, data, and weak-signal work","C":"Satellite only","D":"Not HF"}},
-    {"prompt":"If a 12-volt circuit draws 2 amperes, what power is used?","answer":"C","options":{"A":"6 watts","B":"12 watts","C":"24 watts","D":"48 watts"}},
-    {"prompt":"What is the best response if unsure a transmission is within your privileges?","answer":"C","options":{"A":"Transmit first","B":"Use maximum power","C":"Verify privileges first","D":"Let a friend transmit"}},
-    {"prompt":"Which item best helps protect equipment from nearby lightning energy?","answer":"A","options":{"A":"Proper grounding and lightning protection","B":"Louder audio","C":"Desk lamp","D":"Lower Morse speed"}},
-    {"prompt":"What does a transformer commonly do?","answer":"C","options":{"A":"Stores charge chemically","B":"Converts RF into sound","C":"Transfers energy between windings","D":"Measures SWR"}},
-    {"prompt":"Why is listening before calling CQ important?","answer":"B","options":{"A":"Reduces antenna size","B":"Avoids interfering with ongoing contacts","C":"Increases battery voltage","D":"Changes the band edge"}},
-    {"prompt":"Which condition most affects VHF/UHF line-of-sight coverage?","answer":"A","options":{"A":"Antenna height","B":"Keyboard layout","C":"Call sign suffix","D":"Power supply paint color"}},
-    {"prompt":"What is one common purpose of a tuner or matching network?","answer":"B","options":{"A":"Create AC power from sunlight","B":"Help match the transmitter system to the load","C":"Replace station identification","D":"Increase license class"}},
-    {"prompt":"Which operating habit is most professional during a busy net?","answer":"B","options":{"A":"Long unbroken transmissions","B":"Clear, concise transmissions with pauses","C":"Refuse to identify","D":"Tune up on the active frequency"}},
-    {"prompt":"What does polarization describe?","answer":"A","options":{"A":"Orientation of the electric field","B":"Battery chemistry only","C":"Age of the antenna","D":"Number of repeaters"}},
-    {"prompt":"What can result from poor grounding or unsafe wiring?","answer":"B","options":{"A":"Reduced need for ID","B":"Shock hazard and equipment damage","C":"Automatic Extra privileges","D":"Lower ionospheric absorption"}},
-    {"prompt":"What is most likely to improve weak-signal fixed-station performance?","answer":"A","options":{"A":"Better antenna placement","B":"Cover the radio with cloth","C":"Longest microphone cable possible","D":"Lower the antenna behind a shed"}},
-    {"prompt":"Why may lower HF bands be preferred at night?","answer":"B","options":{"A":"Night makes all antennas resonant","B":"Propagation can favor lower frequencies","C":"FM becomes mandatory","D":"Repeaters stop requiring offsets"}},
-    {"prompt":"What is the basic role of an antenna?","answer":"A","options":{"A":"Convert RF energy to radio waves and back","B":"Lower house voltage","C":"Replace feed line","D":"Store logs"}},
-    {"prompt":"What unit measures resistance?","answer":"C","options":{"A":"Watt","B":"Volt","C":"Ohm","D":"Second"}},
-    {"prompt":"What does an inductor store energy in?","answer":"B","options":{"A":"Electric field","B":"Magnetic field","C":"Display","D":"Fuse element"}},
-    {"prompt":"What is the major hazard when raising an antenna mast?","answer":"B","options":{"A":"Call sign prefixes","B":"Overhead power lines","C":"Notebook paper","D":"Phonetics"}},
-    {"prompt":"HF often supports long-distance contacts by what means?","answer":"B","options":{"A":"DC conduction","B":"Ionospheric propagation","C":"Fuse action","D":"Battery chemistry"}},
-    {"prompt":"A 10-ohm load with 2 amperes has what voltage?","answer":"C","options":{"A":"5 volts","B":"10 volts","C":"20 volts","D":"40 volts"}},
-    {"prompt":"What does a higher antenna often improve on VHF/UHF?","answer":"A","options":{"A":"Line-of-sight coverage","B":"Fuse speed","C":"Battery chemistry","D":"ID interval"}},
-    {"prompt":"Why avoid tuning up on an occupied frequency?","answer":"B","options":{"A":"It wastes electricity only","B":"It can interfere with ongoing communications","C":"It is required for nets","D":"It improves propagation too much"}},
-    {"prompt":"Which statement best describes FM on amateur repeaters?","answer":"A","options":{"A":"Common for local voice communication","B":"Banned on VHF","C":"Used only for Morse code","D":"Never requires offset"}},
-    {"prompt":"Which practice helps reduce accidental repeater interference?","answer":"B","options":{"A":"Transmit immediately after keying up","B":"Pause briefly after pressing PTT","C":"Ignore courtesy tones","D":"Use the wrong offset"}},
-    {"prompt":"If current increases in a fixed resistance, voltage does what?","answer":"A","options":{"A":"Also increases by Ohm's Law","B":"Becomes zero","C":"Always becomes AC","D":"No longer matters"}},
-    {"prompt":"Why might signal reports be weak even with low SWR?","answer":"A","options":{"A":"Antenna placement or efficiency may still be poor","B":"Low SWR guarantees strong signals","C":"Mic has too many buttons","D":"Call sign is too short"}},
-    {"prompt":"What is the most responsible action if equipment smells hot?","answer":"B","options":{"A":"Keep transmitting","B":"Disconnect power and investigate safely","C":"Increase power","D":"Bypass protection"}},
-    {"prompt":"What is the main purpose of station identification rules?","answer":"B","options":{"A":"Obscure the source of signals","B":"Identify transmitting stations","C":"Replace logging in every case","D":"Determine solar flux"}},
-    {"prompt":"Which statement about digital communication is true?","answer":"A","options":{"A":"It can include data and weak-signal modes","B":"It is not radio","C":"It always uses voice microphones","D":"It cannot coexist with band planning"}},
-    {"prompt":"What is one likely result of replacing a fuse with a higher-rated one?","answer":"C","options":{"A":"Better audio quality","B":"Improved antenna match","C":"Higher risk of damage or fire","D":"Lower RF exposure"}},
-    {"prompt":"What does your call sign identify?","answer":"B","options":{"A":"Only your antenna","B":"Your station","C":"Only your power supply","D":"Your feed line"}},
-    {"prompt":"Which mode is narrow bandwidth and useful for weak signals?","answer":"C","options":{"A":"Wideband FM","B":"Analog TV","C":"CW","D":"Broadcast AM only"}},
-    {"prompt":"What feed line is common for amateur stations?","answer":"A","options":{"A":"Coaxial cable","B":"Lamp cord only","C":"Speaker wire only","D":"Ribbon cable for all uses"}},
-    {"prompt":"Which safety rule is most important around outdoor antennas?","answer":"C","options":{"A":"Use the longest mast possible","B":"Work during storms","C":"Stay clear of power lines","D":"Ignore grounding"}},
-    {"prompt":"What is the usual unit of current?","answer":"A","options":{"A":"Ampere","B":"Farad","C":"Henry","D":"Watt-hour"}},
-    {"prompt":"What is the usual unit of voltage?","answer":"B","options":{"A":"Ohm","B":"Volt","C":"Watt","D":"Tesla"}},
-    {"prompt":"What is a resistor used for?","answer":"A","options":{"A":"Limiting current","B":"Making AC from DC","C":"Radiating RF","D":"Creating speech"}},
-    {"prompt":"What is a transistor commonly used for?","answer":"D","options":{"A":"Cooling feed line","B":"Changing call signs","C":"Grounding a tower","D":"Amplification or switching"}},
-    {"prompt":"What is the advantage of a higher-gain antenna?","answer":"B","options":{"A":"It removes the need for ID","B":"It can concentrate energy in a desired pattern","C":"It makes all bands resonate","D":"It eliminates losses"}},
-    {"prompt":"What should you do before using a new repeater?","answer":"C","options":{"A":"Transmit a long carrier first","B":"Assume the standard tone","C":"Check its published settings","D":"Use full power immediately"}},
-    {"prompt":"What does line-of-sight mean for VHF/UHF?","answer":"A","options":{"A":"Obstacles and curvature matter","B":"Signals always bounce worldwide","C":"Only Morse works","D":"Power is irrelevant"}},
-    {"prompt":"What is a common handheld radio antenna tradeoff?","answer":"D","options":{"A":"More size, less performance always","B":"No effect from antenna length","C":"It works only indoors","D":"Convenience can reduce efficiency"}},
-    {"prompt":"Why is proper grounding important?","answer":"B","options":{"A":"It increases Morse speed","B":"It helps with safety and equipment protection","C":"It changes your license class","D":"It removes all noise"}},
-    {"prompt":"What can a dummy load help prevent?","answer":"A","options":{"A":"Unwanted on-air radiation during testing","B":"Battery charging","C":"Call sign errors","D":"Ionospheric fading"}},
-    {"prompt":"When should you identify your station?","answer":"C","options":{"A":"Only when asked","B":"Only on repeaters","C":"According to station ID rules","D":"Only during emergencies"}},
-    {"prompt":"Which part of the spectrum is 2 meters?","answer":"B","options":{"A":"UHF","B":"VHF","C":"LF","D":"Audio"}},
-    {"prompt":"What is 70 centimeters commonly classified as?","answer":"A","options":{"A":"UHF","B":"HF","C":"MF","D":"ELF"}},
-    {"prompt":"What happens when feed line length increases?","answer":"C","options":{"A":"Loss always disappears","B":"Signal becomes encrypted","C":"Loss can increase","D":"Call sign changes"}},
-    {"prompt":"What is resonance in an antenna system?","answer":"D","options":{"A":"A type of microphone setting","B":"A logging method","C":"A repeater tone","D":"A condition related to efficient operation at a frequency"}},
-    {"prompt":"What is a primary reason to use phonetics in poor conditions?","answer":"A","options":{"A":"Improve copy accuracy","B":"Increase battery life","C":"Reduce SWR","D":"Tune the feed line"}},
-    {"prompt":"What is one benefit of digital weak-signal modes?","answer":"B","options":{"A":"They remove all regulations","B":"They can decode very weak signals","C":"They require no computer","D":"They work only on UHF"}},
-    {"prompt":"What does P = V x I calculate?","answer":"D","options":{"A":"Resistance","B":"Frequency","C":"Wavelength","D":"Power"}},
-    {"prompt":"If voltage is fixed and resistance increases, current usually does what?","answer":"B","options":{"A":"Increases","B":"Decreases","C":"Becomes RF","D":"Doubles automatically"}},
-    {"prompt":"If a station is too close to power lines, what is the best choice?","answer":"C","options":{"A":"Operate quickly","B":"Use rubber gloves only","C":"Relocate or redesign the installation","D":"Lower the fuse rating"}},
-    {"prompt":"What is a common reason to use low power on a repeater?","answer":"A","options":{"A":"Use only as much power as needed","B":"Hide your signal","C":"Change modulation","D":"Avoid identification"}},
-    {"prompt":"What is one purpose of a band plan on HF?","answer":"D","options":{"A":"It changes FCC rules","B":"It tunes antennas","C":"It sets exam dates","D":"It encourages compatible mode use"}},
-    {"prompt":"What is an example of good repeater courtesy?","answer":"B","options":{"A":"Kerchunking repeatedly","B":"Leaving pauses between transmissions","C":"Never identifying","D":"Tuning up on the machine"}},
-    {"prompt":"Why are outdoor feed line connectors often weatherproofed?","answer":"C","options":{"A":"To change impedance","B":"To increase voice range only","C":"To reduce water intrusion and loss","D":"To create grounding"}},
-    {"prompt":"What does RF stand for?","answer":"A","options":{"A":"Radio frequency","B":"Resistance factor","C":"Repeater function","D":"Radiation fuse"}},
-    {"prompt":"What is a likely effect of corroded antenna connections?","answer":"D","options":{"A":"Automatic resonance","B":"Higher battery voltage","C":"Lower safety risk","D":"Poor performance and possible intermittent operation"}},
-    {"prompt":"What is one reason to keep transmissions concise during nets?","answer":"B","options":{"A":"To avoid learning procedure","B":"To keep traffic efficient","C":"To reduce license privileges","D":"To disable the repeater"}},
-    {"prompt":"What does an antenna tuner mainly tune?","answer":"C","options":{"A":"The ionosphere","B":"The microphone","C":"The impedance relationship seen by the transmitter","D":"Your license record"}},
-    {"prompt":"What is the benefit of listening before using a simplex frequency?","answer":"A","options":{"A":"It helps avoid interrupting existing communications","B":"It raises output power","C":"It narrows bandwidth","D":"It changes your mode"}},
-    {"prompt":"What is one sign of a poor antenna location?","answer":"B","options":{"A":"Correct call sign format","B":"Nearby obstructions reducing performance","C":"Use of coax","D":"Low microphone gain"}},
-    {"prompt":"What does DC mean?","answer":"D","options":{"A":"Digital current","B":"Directional coax","C":"Dynamic coupling","D":"Direct current"}},
-    {"prompt":"What does AC mean?","answer":"A","options":{"A":"Alternating current","B":"Antenna coupling","C":"Automatic control","D":"Amplitude carrier"}},
-    {"prompt":"What is one reason to avoid overdriving audio on voice modes?","answer":"C","options":{"A":"It raises resistance","B":"It changes your call sign","C":"It can distort your transmitted signal","D":"It lowers your antenna"}},
-    {"prompt":"What is a practical use of a wattmeter?","answer":"B","options":{"A":"Measuring resistance directly","B":"Checking RF power output","C":"Finding tone access","D":"Setting clock time"}},
-    {"prompt":"What can solar activity affect on HF?","answer":"D","options":{"A":"Fuse ratings","B":"Battery chemistry","C":"Microphone impedance only","D":"Propagation conditions"}},
-    {"prompt":"What is one key benefit of an external mobile antenna versus a handheld rubber duck?","answer":"A","options":{"A":"Often better efficiency and placement","B":"It removes the need for a license","C":"It always has zero SWR","D":"It works without a radio"}},
-    {"prompt":"What is a common cause of reduced battery life in portable operation?","answer":"C","options":{"A":"Using phonetics","B":"Listening first","C":"High transmit power and long transmissions","D":"Using a call sign"}},
-    {"prompt":"What is the first step if a radio suddenly behaves abnormally?","answer":"B","options":{"A":"Increase power","B":"Check safely and troubleshoot systematically","C":"Bypass the fuse","D":"Transmit anyway"}},
-    {"prompt":"What is one reason CW remains useful?","answer":"A","options":{"A":"It can be effective with weak signals and narrow bandwidth","B":"It uses the most bandwidth","C":"It requires internet access","D":"It is only for repeaters"}},
-    {"prompt":"What is one reason operators use headsets in noisy environments?","answer":"D","options":{"A":"To lower RF exposure","B":"To change frequency","C":"To increase SWR","D":"To improve received intelligibility"}},
-    {"prompt":"What is the likely result of transmitting outside your privileges?","answer":"C","options":{"A":"Higher gain","B":"Better propagation","C":"Improper operation and possible enforcement issues","D":"Automatic upgrade"}},
-    {"prompt":"What is one advantage of keeping a simple station log?","answer":"B","options":{"A":"It changes FCC rules","B":"It helps you review contacts and operating issues","C":"It lowers feed line loss","D":"It replaces identification"}},
-    {"prompt":"What is one purpose of a net control station?","answer":"A","options":{"A":"Organize and manage net traffic","B":"Jam weak stations","C":"Provide utility power","D":"Tune all participants"}},
-    {"prompt":"What is a common sign of overload or interference in nearby electronics?","answer":"D","options":{"A":"Higher solar flux","B":"Longer wavelength","C":"Perfect modulation","D":"Distorted or unintended audio or behavior"}},
-    {"prompt":"What is one way to reduce accidental on-air interference while testing?","answer":"B","options":{"A":"Use higher power","B":"Use a dummy load when appropriate","C":"Skip identification","D":"Use random frequencies"}},
-    {"prompt":"What is one reason to keep antennas away from occupied areas when possible?","answer":"C","options":{"A":"To increase feed line loss","B":"To reduce battery drain","C":"To help manage safety and exposure concerns","D":"To change polarization"}},
-    {"prompt":"What is one reason to verify polarity before connecting DC equipment?","answer":"A","options":{"A":"Incorrect polarity can damage equipment","B":"It increases Morse speed","C":"It lowers SWR","D":"It changes call signs"}},
-    {"prompt":"What is the basic meaning of impedance?","answer":"D","options":{"A":"Only DC resistance","B":"Only antenna height","C":"A repeater access method","D":"Opposition to current in AC/RF circuits"}},
-    {"prompt":"What is one likely result of a poor microphone connection?","answer":"B","options":{"A":"Higher gain antenna","B":"Weak or absent transmit audio","C":"Lower battery temperature","D":"Automatic digital mode"}},
-    {"prompt":"What should you do before climbing or servicing a tower or mast system?","answer":"C","options":{"A":"Transmit first","B":"Assume it is safe","C":"Use proper safety procedures and disconnect hazards","D":"Increase output power"}},
-    {"prompt":"What is one benefit of using the minimum necessary bandwidth?","answer":"A","options":{"A":"It helps spectrum efficiency","B":"It increases tower height","C":"It removes the need for IDs","D":"It changes propagation"}},
-    {"prompt":"What is one common reason to use simplex instead of a repeater?","answer":"B","options":{"A":"To avoid radios entirely","B":"Direct station-to-station communication may be sufficient","C":"To disable tones","D":"To increase line loss"}}
-  ]
+    "examConfigs":  [
+                        {
+                            "id":  "exam-1",
+                            "title":  "Technician Exam",
+                            "rulesTarget":  14,
+                            "description":  "35-question Technician practice exam with heavier FCC rules coverage plus repeaters, electronics basics, and station practice."
+                        },
+                        {
+                            "id":  "exam-2",
+                            "title":  "General Exam",
+                            "rulesTarget":  12,
+                            "description":  "35-question General practice exam focused on HF operation, propagation, circuits, station setup, and FCC operating rules."
+                        },
+                        {
+                            "id":  "exam-3",
+                            "title":  "Amateur Extra Exam",
+                            "rulesTarget":  12,
+                            "description":  "35-question Amateur Extra style mixed review using the expanded bank for broad concept practice and FCC rules review."
+                        }
+                    ],
+    "questions":  [
+                      {
+                          "prompt":  "What is the main purpose of a repeater?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Encrypt traffic",
+                                          "B":  "Extend communication range",
+                                          "C":  "Reduce current draw",
+                                          "D":  "Replace the antenna"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does your amateur call sign do?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Tunes the antenna",
+                                          "B":  "Identifies your station",
+                                          "C":  "Measures output power",
+                                          "D":  "Selects the band"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does V = I x R describe?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Polarization",
+                                          "B":  "Velocity factor",
+                                          "C":  "Ohm\u0027s Law",
+                                          "D":  "SWR"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which mode is common on local VHF/UHF repeaters?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "FM",
+                                          "B":  "SSB",
+                                          "C":  "CW only",
+                                          "D":  "AM only"
+                                      }
+                      },
+                      {
+                          "prompt":  "If frequency increases, wavelength does what?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Increases",
+                                          "B":  "Decreases",
+                                          "C":  "Stays constant",
+                                          "D":  "Becomes DC"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does SWR primarily indicate?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Battery capacity",
+                                          "B":  "Audio deviation",
+                                          "C":  "Antenna-system match quality",
+                                          "D":  "Cable age"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which practice is best before transmitting?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Increase power",
+                                          "B":  "Listen first",
+                                          "C":  "Disable mic gain",
+                                          "D":  "Shift bands"
+                                      }
+                      },
+                      {
+                          "prompt":  "A capacitor stores energy in what?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Magnetic field",
+                                          "B":  "Rotating field",
+                                          "C":  "Electric field",
+                                          "D":  "Sound wave"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which item most directly protects against overcurrent?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Fuse",
+                                          "B":  "Microphone",
+                                          "C":  "Wattmeter",
+                                          "D":  "Dummy load"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which band type is associated with long-distance skywave communication?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "HF",
+                                          "B":  "Audio",
+                                          "C":  "Microwave oven only",
+                                          "D":  "DC"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the control operator responsible for?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Station appearance only",
+                                          "B":  "Proper station operation",
+                                          "C":  "Internet speed",
+                                          "D":  "Weather forecasting"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the safest action when installing an outdoor antenna?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Place it close to power lines",
+                                          "B":  "Work alone in a storm",
+                                          "C":  "Keep clear of power lines",
+                                          "D":  "Use damaged feed line"
+                                      }
+                      },
+                      {
+                          "prompt":  "Power is measured in what unit?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Amperes",
+                                          "B":  "Ohms",
+                                          "C":  "Watts",
+                                          "D":  "Farads"
+                                      }
+                      },
+                      {
+                          "prompt":  "A diode primarily does what?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Amplifies all signals",
+                                          "B":  "Allows current mainly one way",
+                                          "C":  "Stores RF in the mast",
+                                          "D":  "Converts coax to ladder line"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why might a repeater require a CTCSS tone?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Reduce lightning risk",
+                                          "B":  "Access the repeater",
+                                          "C":  "Calculate wavelength",
+                                          "D":  "Improve Morse speed"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which statement about low SWR is best?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Guarantees worldwide contacts",
+                                          "B":  "Means ideal antenna height",
+                                          "C":  "Usually indicates a better impedance match",
+                                          "D":  "Eliminates feed line loss"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a major use of phonetics on the air?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Increase transmitter power",
+                                          "B":  "Make call signs easier to copy",
+                                          "C":  "Hide station identity",
+                                          "D":  "Change modulation type"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which quantity opposes current flow?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Frequency",
+                                          "B":  "Resistance",
+                                          "C":  "Velocity factor",
+                                          "D":  "Modulation index"
+                                      }
+                      },
+                      {
+                          "prompt":  "What should you do if you cause interference?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Ignore it",
+                                          "B":  "Continue until two complaints",
+                                          "C":  "Investigate and correct it",
+                                          "D":  "Move randomly without listening"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one likely risk of replacing a fuse with too high a rating?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Better audio",
+                                          "B":  "Improved antenna match",
+                                          "C":  "Equipment damage or fire",
+                                          "D":  "Lower RF exposure"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why upgrade from Technician to General?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "No antenna needed",
+                                          "B":  "Broader HF privileges",
+                                          "C":  "Avoid ID",
+                                          "D":  "Use commercial frequencies"
+                                      }
+                      },
+                      {
+                          "prompt":  "What often changes HF propagation from day to night?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Display color",
+                                          "B":  "Ionospheric conditions",
+                                          "C":  "Microphone brand",
+                                          "D":  "Label size"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which voice mode is commonly used on HF for bandwidth efficiency?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "SSB",
+                                          "B":  "Wideband FM",
+                                          "C":  "Analog TV",
+                                          "D":  "Tone burst"
+                                      }
+                      },
+                      {
+                          "prompt":  "One advantage of CW is what?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "No skill required",
+                                          "B":  "Works under weak-signal conditions",
+                                          "C":  "Always carries images",
+                                          "D":  "Uses more bandwidth"
+                                      }
+                      },
+                      {
+                          "prompt":  "What usually happens to coax loss as frequency increases?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Goes to zero",
+                                          "B":  "Generally increases",
+                                          "C":  "Becomes negative",
+                                          "D":  "Depends on mic gain"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why is a band plan useful?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Replaces FCC rules",
+                                          "B":  "Helps use accepted subbands",
+                                          "C":  "Sets utility rates",
+                                          "D":  "Tunes the antenna"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a dummy load used for?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Stronger signal",
+                                          "B":  "Test without significant radiation",
+                                          "C":  "Improve mic tone",
+                                          "D":  "Replace a fuse"
+                                      }
+                      },
+                      {
+                          "prompt":  "Digital modes can be used for what?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Government only",
+                                          "B":  "Text, data, and weak-signal work",
+                                          "C":  "Satellite only",
+                                          "D":  "Not HF"
+                                      }
+                      },
+                      {
+                          "prompt":  "If a 12-volt circuit draws 2 amperes, what power is used?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "6 watts",
+                                          "B":  "12 watts",
+                                          "C":  "24 watts",
+                                          "D":  "48 watts"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the best response if unsure a transmission is within your privileges?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Transmit first",
+                                          "B":  "Use maximum power",
+                                          "C":  "Verify privileges first",
+                                          "D":  "Let a friend transmit"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which item best helps protect equipment from nearby lightning energy?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Proper grounding and lightning protection",
+                                          "B":  "Louder audio",
+                                          "C":  "Desk lamp",
+                                          "D":  "Lower Morse speed"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does a transformer commonly do?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Stores charge chemically",
+                                          "B":  "Converts RF into sound",
+                                          "C":  "Transfers energy between windings",
+                                          "D":  "Measures SWR"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why is listening before calling CQ important?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Reduces antenna size",
+                                          "B":  "Avoids interfering with ongoing contacts",
+                                          "C":  "Increases battery voltage",
+                                          "D":  "Changes the band edge"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which condition most affects VHF/UHF line-of-sight coverage?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Antenna height",
+                                          "B":  "Keyboard layout",
+                                          "C":  "Call sign suffix",
+                                          "D":  "Power supply paint color"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one common purpose of a tuner or matching network?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Create AC power from sunlight",
+                                          "B":  "Help match the transmitter system to the load",
+                                          "C":  "Replace station identification",
+                                          "D":  "Increase license class"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which operating habit is most professional during a busy net?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Long unbroken transmissions",
+                                          "B":  "Clear, concise transmissions with pauses",
+                                          "C":  "Refuse to identify",
+                                          "D":  "Tune up on the active frequency"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does polarization describe?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Orientation of the electric field",
+                                          "B":  "Battery chemistry only",
+                                          "C":  "Age of the antenna",
+                                          "D":  "Number of repeaters"
+                                      }
+                      },
+                      {
+                          "prompt":  "What can result from poor grounding or unsafe wiring?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Reduced need for ID",
+                                          "B":  "Shock hazard and equipment damage",
+                                          "C":  "Automatic Extra privileges",
+                                          "D":  "Lower ionospheric absorption"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is most likely to improve weak-signal fixed-station performance?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Better antenna placement",
+                                          "B":  "Cover the radio with cloth",
+                                          "C":  "Longest microphone cable possible",
+                                          "D":  "Lower the antenna behind a shed"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why may lower HF bands be preferred at night?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Night makes all antennas resonant",
+                                          "B":  "Propagation can favor lower frequencies",
+                                          "C":  "FM becomes mandatory",
+                                          "D":  "Repeaters stop requiring offsets"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the basic role of an antenna?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Convert RF energy to radio waves and back",
+                                          "B":  "Lower house voltage",
+                                          "C":  "Replace feed line",
+                                          "D":  "Store logs"
+                                      }
+                      },
+                      {
+                          "prompt":  "What unit measures resistance?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Watt",
+                                          "B":  "Volt",
+                                          "C":  "Ohm",
+                                          "D":  "Second"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does an inductor store energy in?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Electric field",
+                                          "B":  "Magnetic field",
+                                          "C":  "Display",
+                                          "D":  "Fuse element"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the major hazard when raising an antenna mast?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Call sign prefixes",
+                                          "B":  "Overhead power lines",
+                                          "C":  "Notebook paper",
+                                          "D":  "Phonetics"
+                                      }
+                      },
+                      {
+                          "prompt":  "HF often supports long-distance contacts by what means?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "DC conduction",
+                                          "B":  "Ionospheric propagation",
+                                          "C":  "Fuse action",
+                                          "D":  "Battery chemistry"
+                                      }
+                      },
+                      {
+                          "prompt":  "A 10-ohm load with 2 amperes has what voltage?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "5 volts",
+                                          "B":  "10 volts",
+                                          "C":  "20 volts",
+                                          "D":  "40 volts"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does a higher antenna often improve on VHF/UHF?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Line-of-sight coverage",
+                                          "B":  "Fuse speed",
+                                          "C":  "Battery chemistry",
+                                          "D":  "ID interval"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why avoid tuning up on an occupied frequency?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "It wastes electricity only",
+                                          "B":  "It can interfere with ongoing communications",
+                                          "C":  "It is required for nets",
+                                          "D":  "It improves propagation too much"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which statement best describes FM on amateur repeaters?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Common for local voice communication",
+                                          "B":  "Banned on VHF",
+                                          "C":  "Used only for Morse code",
+                                          "D":  "Never requires offset"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which practice helps reduce accidental repeater interference?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Transmit immediately after keying up",
+                                          "B":  "Pause briefly after pressing PTT",
+                                          "C":  "Ignore courtesy tones",
+                                          "D":  "Use the wrong offset"
+                                      }
+                      },
+                      {
+                          "prompt":  "If current increases in a fixed resistance, voltage does what?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Also increases by Ohm\u0027s Law",
+                                          "B":  "Becomes zero",
+                                          "C":  "Always becomes AC",
+                                          "D":  "No longer matters"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why might signal reports be weak even with low SWR?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Antenna placement or efficiency may still be poor",
+                                          "B":  "Low SWR guarantees strong signals",
+                                          "C":  "Mic has too many buttons",
+                                          "D":  "Call sign is too short"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the most responsible action if equipment smells hot?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Keep transmitting",
+                                          "B":  "Disconnect power and investigate safely",
+                                          "C":  "Increase power",
+                                          "D":  "Bypass protection"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the main purpose of station identification rules?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Obscure the source of signals",
+                                          "B":  "Identify transmitting stations",
+                                          "C":  "Replace logging in every case",
+                                          "D":  "Determine solar flux"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which statement about digital communication is true?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "It can include data and weak-signal modes",
+                                          "B":  "It is not radio",
+                                          "C":  "It always uses voice microphones",
+                                          "D":  "It cannot coexist with band planning"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one likely result of replacing a fuse with a higher-rated one?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Better audio quality",
+                                          "B":  "Improved antenna match",
+                                          "C":  "Higher risk of damage or fire",
+                                          "D":  "Lower RF exposure"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does your call sign identify?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Only your antenna",
+                                          "B":  "Your station",
+                                          "C":  "Only your power supply",
+                                          "D":  "Your feed line"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which mode is narrow bandwidth and useful for weak signals?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Wideband FM",
+                                          "B":  "Analog TV",
+                                          "C":  "CW",
+                                          "D":  "Broadcast AM only"
+                                      }
+                      },
+                      {
+                          "prompt":  "What feed line is common for amateur stations?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Coaxial cable",
+                                          "B":  "Lamp cord only",
+                                          "C":  "Speaker wire only",
+                                          "D":  "Ribbon cable for all uses"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which safety rule is most important around outdoor antennas?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Use the longest mast possible",
+                                          "B":  "Work during storms",
+                                          "C":  "Stay clear of power lines",
+                                          "D":  "Ignore grounding"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the usual unit of current?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Ampere",
+                                          "B":  "Farad",
+                                          "C":  "Henry",
+                                          "D":  "Watt-hour"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the usual unit of voltage?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Ohm",
+                                          "B":  "Volt",
+                                          "C":  "Watt",
+                                          "D":  "Tesla"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a resistor used for?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Limiting current",
+                                          "B":  "Making AC from DC",
+                                          "C":  "Radiating RF",
+                                          "D":  "Creating speech"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a transistor commonly used for?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Cooling feed line",
+                                          "B":  "Changing call signs",
+                                          "C":  "Grounding a tower",
+                                          "D":  "Amplification or switching"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the advantage of a higher-gain antenna?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "It removes the need for ID",
+                                          "B":  "It can concentrate energy in a desired pattern",
+                                          "C":  "It makes all bands resonate",
+                                          "D":  "It eliminates losses"
+                                      }
+                      },
+                      {
+                          "prompt":  "What should you do before using a new repeater?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Transmit a long carrier first",
+                                          "B":  "Assume the standard tone",
+                                          "C":  "Check its published settings",
+                                          "D":  "Use full power immediately"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does line-of-sight mean for VHF/UHF?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Obstacles and curvature matter",
+                                          "B":  "Signals always bounce worldwide",
+                                          "C":  "Only Morse works",
+                                          "D":  "Power is irrelevant"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a common handheld radio antenna tradeoff?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "More size, less performance always",
+                                          "B":  "No effect from antenna length",
+                                          "C":  "It works only indoors",
+                                          "D":  "Convenience can reduce efficiency"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why is proper grounding important?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "It increases Morse speed",
+                                          "B":  "It helps with safety and equipment protection",
+                                          "C":  "It changes your license class",
+                                          "D":  "It removes all noise"
+                                      }
+                      },
+                      {
+                          "prompt":  "What can a dummy load help prevent?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Unwanted on-air radiation during testing",
+                                          "B":  "Battery charging",
+                                          "C":  "Call sign errors",
+                                          "D":  "Ionospheric fading"
+                                      }
+                      },
+                      {
+                          "prompt":  "When should you identify your station?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Only when asked",
+                                          "B":  "Only on repeaters",
+                                          "C":  "According to station ID rules",
+                                          "D":  "Only during emergencies"
+                                      }
+                      },
+                      {
+                          "prompt":  "Which part of the spectrum is 2 meters?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "UHF",
+                                          "B":  "VHF",
+                                          "C":  "LF",
+                                          "D":  "Audio"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is 70 centimeters commonly classified as?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "UHF",
+                                          "B":  "HF",
+                                          "C":  "MF",
+                                          "D":  "ELF"
+                                      }
+                      },
+                      {
+                          "prompt":  "What happens when feed line length increases?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Loss always disappears",
+                                          "B":  "Signal becomes encrypted",
+                                          "C":  "Loss can increase",
+                                          "D":  "Call sign changes"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is resonance in an antenna system?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "A type of microphone setting",
+                                          "B":  "A logging method",
+                                          "C":  "A repeater tone",
+                                          "D":  "A condition related to efficient operation at a frequency"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a primary reason to use phonetics in poor conditions?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Improve copy accuracy",
+                                          "B":  "Increase battery life",
+                                          "C":  "Reduce SWR",
+                                          "D":  "Tune the feed line"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one benefit of digital weak-signal modes?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "They remove all regulations",
+                                          "B":  "They can decode very weak signals",
+                                          "C":  "They require no computer",
+                                          "D":  "They work only on UHF"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does P = V x I calculate?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Resistance",
+                                          "B":  "Frequency",
+                                          "C":  "Wavelength",
+                                          "D":  "Power"
+                                      }
+                      },
+                      {
+                          "prompt":  "If voltage is fixed and resistance increases, current usually does what?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Increases",
+                                          "B":  "Decreases",
+                                          "C":  "Becomes RF",
+                                          "D":  "Doubles automatically"
+                                      }
+                      },
+                      {
+                          "prompt":  "If a station is too close to power lines, what is the best choice?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Operate quickly",
+                                          "B":  "Use rubber gloves only",
+                                          "C":  "Relocate or redesign the installation",
+                                          "D":  "Lower the fuse rating"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a common reason to use low power on a repeater?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Use only as much power as needed",
+                                          "B":  "Hide your signal",
+                                          "C":  "Change modulation",
+                                          "D":  "Avoid identification"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one purpose of a band plan on HF?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "It changes FCC rules",
+                                          "B":  "It tunes antennas",
+                                          "C":  "It sets exam dates",
+                                          "D":  "It encourages compatible mode use"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is an example of good repeater courtesy?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Kerchunking repeatedly",
+                                          "B":  "Leaving pauses between transmissions",
+                                          "C":  "Never identifying",
+                                          "D":  "Tuning up on the machine"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why are outdoor feed line connectors often weatherproofed?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "To change impedance",
+                                          "B":  "To increase voice range only",
+                                          "C":  "To reduce water intrusion and loss",
+                                          "D":  "To create grounding"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does RF stand for?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Radio frequency",
+                                          "B":  "Resistance factor",
+                                          "C":  "Repeater function",
+                                          "D":  "Radiation fuse"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a likely effect of corroded antenna connections?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Automatic resonance",
+                                          "B":  "Higher battery voltage",
+                                          "C":  "Lower safety risk",
+                                          "D":  "Poor performance and possible intermittent operation"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one reason to keep transmissions concise during nets?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "To avoid learning procedure",
+                                          "B":  "To keep traffic efficient",
+                                          "C":  "To reduce license privileges",
+                                          "D":  "To disable the repeater"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does an antenna tuner mainly tune?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "The ionosphere",
+                                          "B":  "The microphone",
+                                          "C":  "The impedance relationship seen by the transmitter",
+                                          "D":  "Your license record"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the benefit of listening before using a simplex frequency?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "It helps avoid interrupting existing communications",
+                                          "B":  "It raises output power",
+                                          "C":  "It narrows bandwidth",
+                                          "D":  "It changes your mode"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one sign of a poor antenna location?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Correct call sign format",
+                                          "B":  "Nearby obstructions reducing performance",
+                                          "C":  "Use of coax",
+                                          "D":  "Low microphone gain"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does DC mean?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Digital current",
+                                          "B":  "Directional coax",
+                                          "C":  "Dynamic coupling",
+                                          "D":  "Direct current"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does AC mean?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Alternating current",
+                                          "B":  "Antenna coupling",
+                                          "C":  "Automatic control",
+                                          "D":  "Amplitude carrier"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one reason to avoid overdriving audio on voice modes?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "It raises resistance",
+                                          "B":  "It changes your call sign",
+                                          "C":  "It can distort your transmitted signal",
+                                          "D":  "It lowers your antenna"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a practical use of a wattmeter?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Measuring resistance directly",
+                                          "B":  "Checking RF power output",
+                                          "C":  "Finding tone access",
+                                          "D":  "Setting clock time"
+                                      }
+                      },
+                      {
+                          "prompt":  "What can solar activity affect on HF?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Fuse ratings",
+                                          "B":  "Battery chemistry",
+                                          "C":  "Microphone impedance only",
+                                          "D":  "Propagation conditions"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one key benefit of an external mobile antenna versus a handheld rubber duck?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Often better efficiency and placement",
+                                          "B":  "It removes the need for a license",
+                                          "C":  "It always has zero SWR",
+                                          "D":  "It works without a radio"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a common cause of reduced battery life in portable operation?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Using phonetics",
+                                          "B":  "Listening first",
+                                          "C":  "High transmit power and long transmissions",
+                                          "D":  "Using a call sign"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the first step if a radio suddenly behaves abnormally?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Increase power",
+                                          "B":  "Check safely and troubleshoot systematically",
+                                          "C":  "Bypass the fuse",
+                                          "D":  "Transmit anyway"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one reason CW remains useful?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "It can be effective with weak signals and narrow bandwidth",
+                                          "B":  "It uses the most bandwidth",
+                                          "C":  "It requires internet access",
+                                          "D":  "It is only for repeaters"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one reason operators use headsets in noisy environments?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "To lower RF exposure",
+                                          "B":  "To change frequency",
+                                          "C":  "To increase SWR",
+                                          "D":  "To improve received intelligibility"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the likely result of transmitting outside your privileges?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Higher gain",
+                                          "B":  "Better propagation",
+                                          "C":  "Improper operation and possible enforcement issues",
+                                          "D":  "Automatic upgrade"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one advantage of keeping a simple station log?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "It changes FCC rules",
+                                          "B":  "It helps you review contacts and operating issues",
+                                          "C":  "It lowers feed line loss",
+                                          "D":  "It replaces identification"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one purpose of a net control station?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Organize and manage net traffic",
+                                          "B":  "Jam weak stations",
+                                          "C":  "Provide utility power",
+                                          "D":  "Tune all participants"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is a common sign of overload or interference in nearby electronics?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Higher solar flux",
+                                          "B":  "Longer wavelength",
+                                          "C":  "Perfect modulation",
+                                          "D":  "Distorted or unintended audio or behavior"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one way to reduce accidental on-air interference while testing?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Use higher power",
+                                          "B":  "Use a dummy load when appropriate",
+                                          "C":  "Skip identification",
+                                          "D":  "Use random frequencies"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one reason to keep antennas away from occupied areas when possible?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "To increase feed line loss",
+                                          "B":  "To reduce battery drain",
+                                          "C":  "To help manage safety and exposure concerns",
+                                          "D":  "To change polarization"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one reason to verify polarity before connecting DC equipment?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Incorrect polarity can damage equipment",
+                                          "B":  "It increases Morse speed",
+                                          "C":  "It lowers SWR",
+                                          "D":  "It changes call signs"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the basic meaning of impedance?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Only DC resistance",
+                                          "B":  "Only antenna height",
+                                          "C":  "A repeater access method",
+                                          "D":  "Opposition to current in AC/RF circuits"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one likely result of a poor microphone connection?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Higher gain antenna",
+                                          "B":  "Weak or absent transmit audio",
+                                          "C":  "Lower battery temperature",
+                                          "D":  "Automatic digital mode"
+                                      }
+                      },
+                      {
+                          "prompt":  "What should you do before climbing or servicing a tower or mast system?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Transmit first",
+                                          "B":  "Assume it is safe",
+                                          "C":  "Use proper safety procedures and disconnect hazards",
+                                          "D":  "Increase output power"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one benefit of using the minimum necessary bandwidth?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "It helps spectrum efficiency",
+                                          "B":  "It increases tower height",
+                                          "C":  "It removes the need for IDs",
+                                          "D":  "It changes propagation"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is one common reason to use simplex instead of a repeater?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "To avoid radios entirely",
+                                          "B":  "Direct station-to-station communication may be sufficient",
+                                          "C":  "To disable tones",
+                                          "D":  "To increase line loss"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What type of communication is generally prohibited in the amateur service?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Routine school announcements",
+                                          "B":  "Messages for business or compensation",
+                                          "C":  "Technical discussions between operators",
+                                          "D":  "Signal reports to another station"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is the best answer if someone asks you to use ham radio for company dispatch traffic?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Do it if the transmission is short",
+                                          "B":  "Do it only on VHF",
+                                          "C":  "Decline because amateur radio is not for regular business communications",
+                                          "D":  "Do it if no repeater is involved"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is generally true about transmitting music on an amateur station?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "It is generally prohibited",
+                                          "B":  "It is required during nets",
+                                          "C":  "It is allowed if the song is short",
+                                          "D":  "It is allowed anytime on repeaters"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What does the FCC mean by broadcasting in the amateur service?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Calling CQ",
+                                          "B":  "Talking through a repeater",
+                                          "C":  "Sending telemetry to your own station",
+                                          "D":  "Transmitting intended for the general public"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Which routine communication is normally acceptable on amateur radio?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Paid dispatch traffic",
+                                          "B":  "Personal, noncommercial two-way communication",
+                                          "C":  "Encrypted business orders",
+                                          "D":  "Broadcast entertainment programming"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Why should amateur operators avoid codes or ciphers that hide meaning?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Messages obscuring meaning are generally prohibited",
+                                          "B":  "They increase SWR",
+                                          "C":  "They lower power output",
+                                          "D":  "They prevent repeater offsets"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Who is primarily responsible for proper transmitter operation while a station is on the air?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "The microphone manufacturer",
+                                          "B":  "The frequency coordinator",
+                                          "C":  "The control operator",
+                                          "D":  "The nearest repeater trustee"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What should you do if your transmission is causing harmful interference?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Raise power to punch through",
+                                          "B":  "Stop and correct the problem",
+                                          "C":  "Ignore it unless a friend complains",
+                                          "D":  "Move randomly without checking"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Why is a band plan not a replacement for FCC rules?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Band plans apply only to commercial stations",
+                                          "B":  "Band plans set transmitter power limits",
+                                          "C":  "Band plans are only for satellite use",
+                                          "D":  "Band plans are voluntary while FCC rules are regulatory"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is the main purpose of a frequency coordinator?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Recommend repeater and channel use to reduce interference",
+                                          "B":  "Issue amateur licenses",
+                                          "C":  "Set FCC enforcement policy",
+                                          "D":  "Measure antenna SWR"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "If an unlicensed person speaks over your station under your supervision, who remains responsible?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "The repeater owner only",
+                                          "B":  "The control operator",
+                                          "C":  "No one because the guest is unlicensed",
+                                          "D":  "The radio manufacturer"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is the best response to deliberate interference from another station?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Interfere back until they stop",
+                                          "B":  "Increase power and keep talking",
+                                          "C":  "Do not retaliate and handle it through proper channels",
+                                          "D":  "Transmit music over them"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What type of language or content is prohibited on amateur radio?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Phonetics",
+                                          "B":  "Technical terminology",
+                                          "C":  "Signal reports",
+                                          "D":  "Obscene or indecent content"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Why should you verify your privileges before changing bands or modes?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "To stay within your authorized operating privileges",
+                                          "B":  "To improve battery life",
+                                          "C":  "To raise antenna gain",
+                                          "D":  "To avoid using phonetics"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is generally true about one-way transmissions in the amateur service?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "They are always preferred to two-way contacts",
+                                          "B":  "They are allowed only in specific authorized cases",
+                                          "C":  "They are required on HF",
+                                          "D":  "They replace station identification"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What identification should you use on a repeater?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Only your first name",
+                                          "B":  "Only a tactical label",
+                                          "C":  "Your assigned call sign",
+                                          "D":  "No identification is needed on repeaters"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What should a control operator do if a transmitter is malfunctioning or producing bad spurious signals?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Stop transmitting until the problem is corrected",
+                                          "B":  "Switch microphones and continue",
+                                          "C":  "Use a higher fuse rating",
+                                          "D":  "Move to another band without testing"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Why is amateur radio not a substitute for a regular commercial dispatch system?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Dispatch traffic requires higher voltage",
+                                          "B":  "Dispatch traffic is FM only",
+                                          "C":  "Dispatch traffic needs a dummy load",
+                                          "D":  "Amateur radio is a noncommercial self-training and communication service"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Which sales-related message is generally acceptable on amateur radio?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Daily advertising for a retail store",
+                                          "B":  "An occasional notice offering personally owned amateur equipment for sale",
+                                          "C":  "A paid commercial for radio accessories",
+                                          "D":  "A standing business inventory update"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Before allowing another operator to control your station, what should you confirm?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "That they prefer your microphone",
+                                          "B":  "That they know your Wi-Fi password",
+                                          "C":  "That they have the privileges needed for the planned transmissions",
+                                          "D":  "That they will use maximum power"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What traffic has the highest priority in the amateur service?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Routine weather observations",
+                                          "B":  "Equipment sale notices",
+                                          "C":  "Contest exchanges",
+                                          "D":  "Emergency communications involving immediate safety of life or property"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What operating attitude is expected when sharing a frequency with other amateurs?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Cooperate and use good amateur practice",
+                                          "B":  "Claim the frequency if you arrived first",
+                                          "C":  "Tune up over weaker stations",
+                                          "D":  "Ignore all band plans and customs"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What should you verify before transmitting third-party traffic?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "That your station uses the highest power allowed",
+                                          "B":  "That the communication is permitted and appropriate",
+                                          "C":  "That the message contains a music bed",
+                                          "D":  "That the repeater timer is disabled"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is the rule on sending a false distress or emergency signal?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Allowed during contests",
+                                          "B":  "Allowed if it is a joke",
+                                          "C":  "Prohibited",
+                                          "D":  "Required before calling CQ"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Why should amateur transmissions stay in plain language whenever practical?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Plain language increases antenna gain",
+                                          "B":  "Plain language reduces coax loss",
+                                          "C":  "Plain language changes license class",
+                                          "D":  "The meaning of messages generally must not be hidden"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What should you do when a frequency is already in use?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Wait or ask if the frequency is in use before transmitting",
+                                          "B":  "Key up immediately to claim it",
+                                          "C":  "Tune your amplifier there",
+                                          "D":  "Use music to test audio"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "Why is it important to keep FCC contact information current for your license?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "It increases output power",
+                                          "B":  "It helps ensure you can receive official correspondence",
+                                          "C":  "It improves propagation",
+                                          "D":  "It changes repeater offsets"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is the best reason to avoid retransmitting entertainment audio or songs over amateur radio?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Music and broadcasting-type content are generally not permitted",
+                                          "B":  "It lowers microphone gain",
+                                          "C":  "It raises feed line loss",
+                                          "D":  "It disables CTCSS tones"
+                                      }
+                      },
+                      {
+                          "category":  "fcc-rules",
+                          "prompt":  "What is the proper answer if a friend asks you to hide the meaning of a message with a secret code?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Agree if the message is brief",
+                                          "B":  "Agree only on simplex",
+                                          "C":  "Agree only at low power",
+                                          "D":  "Decline because obscuring the meaning of messages is generally prohibited"
+                                      }
+                      }
+                  ]
 }
