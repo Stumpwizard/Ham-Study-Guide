@@ -1,7 +1,8 @@
-const questionCountPerExam = 35;
+﻿const questionCountPerExam = 35;
 const maxIncorrectToPass = 9;
 const passingCorrectCount = questionCountPerExam - maxIncorrectToPass;
 const defaultRulesQuestionTarget = 12;
+const assetVersion = '20260308b';
 const rulesKeywords = [
   "fcc",
   "call sign",
@@ -64,7 +65,7 @@ async function readStudyData() {
     return parsed;
   }
 
-  const response = await fetch("./content/question-bank.json", { cache: "no-store" });
+  const response = await fetch(`./content/question-bank.json?v=${assetVersion}`, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Unable to load study data: ${response.status} ${response.statusText}`);
   }
@@ -449,3 +450,4 @@ function finalizeOhmsSolution(voltage, current, resistance, power) {
     power
   };
 }
+
