@@ -8,31 +8,24 @@ This repository contains the browser-based ham radio study guide deployed to Git
 
 ## Browser App
 
-- Source HTML lives in `site/index.html`
-- Source image assets live in `site/`
-- Source styles live in `site/src/ham-study.css`
-- Source browser logic lives in `site/src/ham-study-app.js`
-- Study questions and exam metadata live in `site/content/question-bank.json`
-- Generated deploy output is written to `public/` and is not tracked in git
+- App entry HTML lives at `index.html`
+- Custom Pages 404 lives at `404.html`
+- Styles live in `src/ham-study.css`
+- Browser logic lives in `src/ham-study-app.js`
+- Study questions and exam metadata live in `content/question-bank.json`
+- Image assets live at the repository root
 
-## Local Build
-
-```bash
-npm ci
-npm run build
-```
-
-Open `public/index.html` in a modern browser after building. The app includes the study guide content, the Ohm's Law graphic and calculator, and randomized 20-question exams drawn from the original 112-question bank.
+Open `index.html` from the repo root through GitHub Pages or any static file server. The app includes the study guide content, the Ohm's Law graphic and calculator, and randomized 20-question exams drawn from the original 112-question bank.
 
 ## GitHub Pages
 
-GitHub Actions builds the site from `site/` and uploads `public/` to Pages.
+The app now lives directly at the repository root. GitHub Pages can serve it from the branch root or from the GitHub Actions Pages artifact without any build step.
 
 After pushing this repository to GitHub:
 
 1. Push to `main` or `master`.
-2. In the GitHub repository settings, set Pages to use `GitHub Actions` as the source.
-3. The deploy workflow runs `npm ci`, `npm run build`, and publishes `public/index.html` as the Pages entrypoint.
+2. Ensure Pages is serving the repository root app, either by `Deploy from a branch` at the root or by using the included no-build Pages workflow.
+3. The top-level `index.html` is the Pages entrypoint.
 
 ## Windows App
 
