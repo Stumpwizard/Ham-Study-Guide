@@ -23,6 +23,13 @@ const renderedHtml = htmlTemplate
     '<script defer src="./src/ham-study-app.js"></script>',
     `    <script id="study-data" type="application/json">${escapeInlineJson(questionBank.trim())}</script>\n    <script defer src="./src/ham-study-app.js"></script>`
   );
+const rootHtml = htmlTemplate
+  .replace('<link rel="stylesheet" href="./src/ham-study.css" />', `    <style>\n${css.trim()}\n    </style>`)
+  .replaceAll("../Stumpwizard.png", "./Stumpwizard.png")
+  .replace(
+    '<script defer src="./src/ham-study-app.js"></script>',
+    `    <script id="study-data" type="application/json">${escapeInlineJson(questionBank.trim())}</script>\n    <script>\n${js.trim()}\n    </script>`
+  );
 
 await rm(publicDir, { recursive: true, force: true });
 await Promise.all([
@@ -31,6 +38,7 @@ await Promise.all([
 ]);
 
 await Promise.all([
+  writeFile(path.join(rootDir, "index.html"), `${rootHtml}\n`),
   writeFile(path.join(publicDir, "index.html"), `${renderedHtml}\n`),
   writeFile(path.join(publicSrcDir, "ham-study.css"), css),
   writeFile(path.join(publicSrcDir, "ham-study-app.js"), js),

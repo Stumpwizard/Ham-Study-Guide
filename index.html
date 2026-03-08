@@ -2,15 +2,1153 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./site/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#155e63" />
     <title>Stumpwizards Ham Study Guide</title>
-    <link rel="canonical" href="./site/index.html" />
-    <script>
-      window.location.replace("./site/index.html");
-    </script>
+        <style>
+:root {
+  --canvas: #f3ecdf;
+  --ink: #1f2a2e;
+  --muted: #5b645f;
+  --panel: rgba(255, 252, 245, 0.94);
+  --panel-strong: #fffdf8;
+  --accent: #155e63;
+  --line: rgba(31, 42, 46, 0.12);
+  --success: #24613a;
+  --danger: #8d2f2f;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(21, 94, 99, 0.16), transparent 28%),
+    radial-gradient(circle at right, rgba(183, 111, 49, 0.16), transparent 24%),
+    linear-gradient(180deg, #f8f3e9 0%, #efe4d1 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.study-app {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+
+.hero,
+.card,
+.tab-panel {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel);
+  box-shadow: 0 18px 42px rgba(63, 44, 24, 0.08);
+}
+
+.hero {
+  padding: 20px;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.hero-art {
+  width: 112px;
+  height: 112px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 24px rgba(63, 44, 24, 0.18);
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-copy .lede {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: clamp(1.9rem, 8vw, 3.4rem);
+  line-height: 1.02;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 4.6vw, 1.8rem);
+}
+
+h3 {
+  font-size: clamp(1rem, 4vw, 1.15rem);
+}
+
+.lede {
+  max-width: 60ch;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.tab-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 4px 0;
+  backdrop-filter: blur(10px);
+}
+
+.tab-button {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: transform 140ms ease, background-color 140ms ease, color 140ms ease;
+  touch-action: manipulation;
+}
+
+.tab-button:hover,
+.tab-button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.tab-button.is-active {
+  background: var(--accent);
+  color: #f9f8f3;
+}
+
+.tab-panel {
+  display: none;
+  padding: 16px;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.card {
+  padding: 18px;
+}
+
+.prose {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.prose h2 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+}
+
+.prose h3 {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.prose ul,
+.prose ol,
+.summary-panel ul,
+.summary-panel ol {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.prose li,
+.summary-panel li {
+  margin-bottom: 8px;
+}
+
+.ohms-law-figure {
+  margin: 16px 0 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #f8f2e7;
+}
+
+.ohms-law-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ohms-law-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ohms-law-chip {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(21, 94, 99, 0.08);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.ohms-law-calculator {
+  margin: 14px 0 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.ohms-law-calculator p {
+  margin-bottom: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.ohms-law-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ohms-law-field {
+  display: grid;
+  gap: 6px;
+}
+
+.ohms-law-field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.ohms-law-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffdf8;
+}
+
+.ohms-law-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ohms-law-result {
+  min-height: 1.4em;
+  margin: 12px 0 0;
+}
+
+.summary-panel {
+  align-self: start;
+}
+
+.exam-shell {
+  display: grid;
+  gap: 16px;
+}
+
+.exam-intro {
+  display: grid;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.exam-intro p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.exam-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.action-button {
+  min-height: 48px;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 16px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.action-button.primary {
+  background: var(--accent);
+  color: #fbfaf4;
+}
+
+.action-button.secondary {
+  background: #efe4d1;
+  color: var(--ink);
+}
+
+.score-output {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.question-list {
+  display: grid;
+  gap: 12px;
+}
+
+.question-card {
+  margin: 0;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel-strong);
+}
+
+.question-card h3 {
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.option-list {
+  display: grid;
+  gap: 8px;
+}
+
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: #fbf7ef;
+  line-height: 1.4;
+}
+
+.option-item input {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.feedback {
+  min-height: 1.4em;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.feedback.correct {
+  color: var(--success);
+}
+
+.feedback.missed {
+  color: var(--danger);
+}
+
+@media (min-width: 700px) {
+  body {
+    padding: 20px;
+  }
+
+  .study-app {
+    gap: 18px;
+  }
+
+  .hero {
+    padding: 28px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 20px;
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .hero-art {
+    width: 124px;
+    height: 124px;
+  }
+
+  .hero-copy .lede {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 60ch;
+  }
+
+  .tab-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .tab-panel {
+    padding: 22px;
+  }
+
+  .guide-grid {
+    grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.9fr);
+    gap: 20px;
+  }
+
+  .summary-panel {
+    position: sticky;
+    top: 18px;
+  }
+
+  .exam-intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .exam-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .score-output {
+    grid-column: auto;
+  }
+
+  .question-card {
+    padding: 16px;
+  }
+}
+    </style>
   </head>
   <body>
-    <p>Redirecting to the study guide app. If you are not redirected, open <a href="./site/index.html">the app</a>.</p>
+    <main class="study-app">
+      <header class="hero">
+        <div class="hero-layout">
+          <img class="hero-art" src="./Stumpwizard.png" alt="Stumpwizard illustration" />
+          <div class="hero-copy">
+            <p class="eyebrow">Browser Edition</p>
+            <h1>Stumpwizards Ham Study Guide</h1>
+            <p class="lede">
+              Cross-platform ham radio exam prep for macOS and Windows. Open this file in any modern browser.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <nav class="tab-list" aria-label="Sections">
+        <button class="tab-button is-active" type="button" data-tab-target="guide">Study Guide</button>
+        <button class="tab-button" type="button" data-tab-target="exam-1">Technician</button>
+        <button class="tab-button" type="button" data-tab-target="exam-2">General</button>
+        <button class="tab-button" type="button" data-tab-target="exam-3">Amateur Extra</button>
+      </nav>
+
+      <section class="tab-panel is-active" data-tab-panel="guide">
+        <div class="guide-grid">
+          <article class="card prose">
+            <h2>License Overview</h2>
+            <h3>Technician</h3>
+            <ul>
+              <li>Entry-level amateur license</li>
+              <li>Strong starting point for VHF/UHF operating, repeaters, emergency communications, and basic HF privileges</li>
+              <li>Core topics: rules, operating practice, electronics basics, antennas, and safety</li>
+            </ul>
+            <h3>General</h3>
+            <ul>
+              <li>Expands HF privileges significantly</li>
+              <li>Best fit for long-distance communication on popular HF bands</li>
+              <li>Core topics: propagation, operating practice, intermediate circuits, digital modes, and station setup</li>
+            </ul>
+            <h3>Amateur Extra</h3>
+            <ul>
+              <li>Highest U.S. license class</li>
+              <li>Broadest operating privileges</li>
+              <li>Core topics: advanced electronics, regulations, and in-depth RF concepts</li>
+            </ul>
+            <h2>How To Study Efficiently</h2>
+            <ol>
+              <li>Learn concepts first instead of memorizing letter patterns.</li>
+              <li>Study in shorter daily sessions.</li>
+              <li>Keep a band plan nearby when reviewing privileges.</li>
+              <li>Practice phonetics, logging, and operating language out loud.</li>
+              <li>Spend more time on missed questions than on repeat passes through correct ones.</li>
+            </ol>
+            <h2>Core Knowledge Areas</h2>
+            <h3>Rules and Operating Practice</h3>
+            <ul>
+              <li>The FCC regulates amateur radio in the United States.</li>
+              <li>Your call sign identifies your station.</li>
+              <li>You must operate only within your license privileges.</li>
+              <li>The control operator is responsible for proper station operation.</li>
+              <li>Stations must avoid harmful interference.</li>
+            </ul>
+            <h3>Frequency, Wavelength, and Modes</h3>
+            <ul>
+              <li>Frequency is measured in hertz.</li>
+              <li>Higher frequency means shorter wavelength.</li>
+              <li>HF is commonly used for long-distance skywave communication.</li>
+              <li>VHF and UHF are commonly used for local and regional communication.</li>
+              <li>FM is common on repeaters, SSB is common on HF, and CW remains useful in weak-signal conditions.</li>
+            </ul>
+            <h3>Repeaters</h3>
+            <ul>
+              <li>A repeater receives on one frequency and retransmits on another.</li>
+              <li>Offset is the difference between repeater input and output.</li>
+              <li>A CTCSS tone may be required for access.</li>
+              <li>Listen first to avoid doubling with another station.</li>
+            </ul>
+            <h3>Electrical Basics</h3>
+            <ul>
+              <li>Voltage is electrical pressure.</li>
+              <li>Current is the flow of charge.</li>
+              <li>Resistance opposes current flow.</li>
+              <li>Power is measured in watts.</li>
+              <li>Ohm's Law: V = I x R, I = V / R, R = V / I.</li>
+              <li>Power equations: P = V x I, P = I^2 x R, P = V^2 / R.</li>
+            </ul>
+            <figure class="ohms-law-figure">
+              <svg viewBox="0 0 360 280" role="img" aria-label="Ohm's Law wheel showing voltage, current, resistance, and power formulas">
+                <circle cx="180" cy="140" r="118" fill="#fffaf1" stroke="rgba(31, 42, 46, 0.12)" stroke-width="2" />
+                <line x1="180" y1="24" x2="180" y2="256" stroke="rgba(31, 42, 46, 0.14)" stroke-width="2" />
+                <line x1="62" y1="140" x2="298" y2="140" stroke="rgba(31, 42, 46, 0.14)" stroke-width="2" />
+                <path d="M180 22 A118 118 0 0 1 298 140 L180 140 Z" fill="#dcefed" />
+                <path d="M298 140 A118 118 0 0 1 180 258 L180 140 Z" fill="#f7dfc3" />
+                <path d="M180 258 A118 118 0 0 1 62 140 L180 140 Z" fill="#efe5cf" />
+                <path d="M62 140 A118 118 0 0 1 180 22 L180 140 Z" fill="#e8efe0" />
+                <text x="180" y="72" text-anchor="middle" font-size="28" font-weight="700" fill="#155e63">P</text>
+                <text x="236" y="145" text-anchor="middle" font-size="28" font-weight="700" fill="#8b4f1d">V</text>
+                <text x="180" y="214" text-anchor="middle" font-size="28" font-weight="700" fill="#6c5b2f">R</text>
+                <text x="124" y="145" text-anchor="middle" font-size="28" font-weight="700" fill="#355f3b">I</text>
+                <text x="180" y="132" text-anchor="middle" font-size="13" fill="#1f2a2e">Power</text>
+                <text x="180" y="148" text-anchor="middle" font-size="13" fill="#1f2a2e">Voltage</text>
+                <text x="180" y="164" text-anchor="middle" font-size="13" fill="#1f2a2e">Resistance / Current</text>
+              </svg>
+              <div class="ohms-law-strip">
+                <div class="ohms-law-chip">V = I x R</div>
+                <div class="ohms-law-chip">I = V / R</div>
+                <div class="ohms-law-chip">R = V / I</div>
+              </div>
+            </figure>
+            <h3>Components and Circuits</h3>
+            <ul>
+              <li>Resistors limit current.</li>
+              <li>Capacitors store energy in an electric field.</li>
+              <li>Inductors store energy in a magnetic field.</li>
+              <li>Fuses protect against overcurrent.</li>
+              <li>Transformers transfer energy between windings.</li>
+              <li>Diodes mainly allow current in one direction.</li>
+            </ul>
+            <h3>Antennas and Feed Lines</h3>
+            <ul>
+              <li>Antennas convert RF energy to radio waves and back again.</li>
+              <li>Coaxial cable is a common amateur feed line.</li>
+              <li>Feed line loss generally increases with frequency and length.</li>
+              <li>SWR indicates how well the antenna system matches the transmission line.</li>
+              <li>Low SWR helps, but it does not guarantee an effective antenna.</li>
+            </ul>
+            <h3>Propagation and Safety</h3>
+            <ul>
+              <li>VHF/UHF is often line-of-sight.</li>
+              <li>HF can support long-distance contacts through ionospheric propagation.</li>
+              <li>Solar conditions and time of day affect band behavior.</li>
+              <li>Keep antennas and masts clear of power lines.</li>
+              <li>Use proper grounding and never bypass protective devices.</li>
+            </ul>
+            <h2>Test-Day Strategy</h2>
+            <ol>
+              <li>Answer easy questions first.</li>
+              <li>Flag calculations and return to them.</li>
+              <li>Read words like best, most, and primary carefully.</li>
+              <li>If two answers seem close, choose the safer or more compliant one.</li>
+            </ol>
+
+            <section class="ohms-law-calculator" data-ohms-calculator>
+              <h4>Ohm's Law Calculator</h4>
+              <p>Enter any two values to solve the other electrical quantities.</p>
+              <div class="ohms-law-fields">
+                <div class="ohms-law-field">
+                  <label for="ohms-voltage">Voltage (V)</label>
+                  <input id="ohms-voltage" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="voltage" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-current">Current (I)</label>
+                  <input id="ohms-current" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="current" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-resistance">Resistance (R)</label>
+                  <input id="ohms-resistance" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="resistance" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-power">Power (P)</label>
+                  <input id="ohms-power" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="power" />
+                </div>
+              </div>
+              <div class="ohms-law-actions">
+                <button class="action-button primary" type="button" data-ohms-action="solve">Calculate</button>
+                <button class="action-button secondary" type="button" data-ohms-action="clear">Clear</button>
+              </div>
+              <p class="ohms-law-result" data-ohms-result>Enter two known values such as voltage and resistance.</p>
+            </section>
+          </article>
+
+          <aside class="card summary-panel">
+            <h2>Focus Areas</h2>
+            <ul>
+              <li>FCC operating responsibilities</li>
+              <li>Repeaters, offsets, and tones</li>
+              <li>Ohm's Law and power calculations</li>
+              <li>Antennas, feed lines, and SWR</li>
+              <li>HF and VHF/UHF propagation</li>
+              <li>Electrical and antenna safety</li>
+            </ul>
+            <h2>Study Method</h2>
+            <ol>
+              <li>Read the guide once straight through.</li>
+              <li>Take one exam without notes.</li>
+              <li>Review only missed questions.</li>
+              <li>Repeat until scores are consistently strong.</li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="exam-1"></section>
+      <section class="tab-panel" data-tab-panel="exam-2"></section>
+      <section class="tab-panel" data-tab-panel="exam-3"></section>
+    </main>
+
+        <script id="study-data" type="application/json">{
+  "examConfigs": [
+    {"id":"exam-1","title":"Technician Exam","description":"Technician license review covering rules, repeaters, electronics basics, and station practice."},
+    {"id":"exam-2","title":"General Exam","description":"General license review focused on HF operation, propagation, circuits, and station setup."},
+    {"id":"exam-3","title":"Amateur Extra Exam","description":"Amateur Extra style mixed review using the full question bank for broad concept practice."}
+  ],
+  "questions": [
+    {"prompt":"What is the main purpose of a repeater?","answer":"B","options":{"A":"Encrypt traffic","B":"Extend communication range","C":"Reduce current draw","D":"Replace the antenna"}},
+    {"prompt":"What does your amateur call sign do?","answer":"B","options":{"A":"Tunes the antenna","B":"Identifies your station","C":"Measures output power","D":"Selects the band"}},
+    {"prompt":"What does V = I x R describe?","answer":"C","options":{"A":"Polarization","B":"Velocity factor","C":"Ohm's Law","D":"SWR"}},
+    {"prompt":"Which mode is common on local VHF/UHF repeaters?","answer":"A","options":{"A":"FM","B":"SSB","C":"CW only","D":"AM only"}},
+    {"prompt":"If frequency increases, wavelength does what?","answer":"B","options":{"A":"Increases","B":"Decreases","C":"Stays constant","D":"Becomes DC"}},
+    {"prompt":"What does SWR primarily indicate?","answer":"C","options":{"A":"Battery capacity","B":"Audio deviation","C":"Antenna-system match quality","D":"Cable age"}},
+    {"prompt":"Which practice is best before transmitting?","answer":"B","options":{"A":"Increase power","B":"Listen first","C":"Disable mic gain","D":"Shift bands"}},
+    {"prompt":"A capacitor stores energy in what?","answer":"C","options":{"A":"Magnetic field","B":"Rotating field","C":"Electric field","D":"Sound wave"}},
+    {"prompt":"Which item most directly protects against overcurrent?","answer":"A","options":{"A":"Fuse","B":"Microphone","C":"Wattmeter","D":"Dummy load"}},
+    {"prompt":"Which band type is associated with long-distance skywave communication?","answer":"A","options":{"A":"HF","B":"Audio","C":"Microwave oven only","D":"DC"}},
+    {"prompt":"What is the control operator responsible for?","answer":"B","options":{"A":"Station appearance only","B":"Proper station operation","C":"Internet speed","D":"Weather forecasting"}},
+    {"prompt":"What is the safest action when installing an outdoor antenna?","answer":"C","options":{"A":"Place it close to power lines","B":"Work alone in a storm","C":"Keep clear of power lines","D":"Use damaged feed line"}},
+    {"prompt":"Power is measured in what unit?","answer":"C","options":{"A":"Amperes","B":"Ohms","C":"Watts","D":"Farads"}},
+    {"prompt":"A diode primarily does what?","answer":"B","options":{"A":"Amplifies all signals","B":"Allows current mainly one way","C":"Stores RF in the mast","D":"Converts coax to ladder line"}},
+    {"prompt":"Why might a repeater require a CTCSS tone?","answer":"B","options":{"A":"Reduce lightning risk","B":"Access the repeater","C":"Calculate wavelength","D":"Improve Morse speed"}},
+    {"prompt":"Which statement about low SWR is best?","answer":"C","options":{"A":"Guarantees worldwide contacts","B":"Means ideal antenna height","C":"Usually indicates a better impedance match","D":"Eliminates feed line loss"}},
+    {"prompt":"What is a major use of phonetics on the air?","answer":"B","options":{"A":"Increase transmitter power","B":"Make call signs easier to copy","C":"Hide station identity","D":"Change modulation type"}},
+    {"prompt":"Which quantity opposes current flow?","answer":"B","options":{"A":"Frequency","B":"Resistance","C":"Velocity factor","D":"Modulation index"}},
+    {"prompt":"What should you do if you cause interference?","answer":"C","options":{"A":"Ignore it","B":"Continue until two complaints","C":"Investigate and correct it","D":"Move randomly without listening"}},
+    {"prompt":"What is one likely risk of replacing a fuse with too high a rating?","answer":"C","options":{"A":"Better audio","B":"Improved antenna match","C":"Equipment damage or fire","D":"Lower RF exposure"}},
+    {"prompt":"Why upgrade from Technician to General?","answer":"B","options":{"A":"No antenna needed","B":"Broader HF privileges","C":"Avoid ID","D":"Use commercial frequencies"}},
+    {"prompt":"What often changes HF propagation from day to night?","answer":"B","options":{"A":"Display color","B":"Ionospheric conditions","C":"Microphone brand","D":"Label size"}},
+    {"prompt":"Which voice mode is commonly used on HF for bandwidth efficiency?","answer":"A","options":{"A":"SSB","B":"Wideband FM","C":"Analog TV","D":"Tone burst"}},
+    {"prompt":"One advantage of CW is what?","answer":"B","options":{"A":"No skill required","B":"Works under weak-signal conditions","C":"Always carries images","D":"Uses more bandwidth"}},
+    {"prompt":"What usually happens to coax loss as frequency increases?","answer":"B","options":{"A":"Goes to zero","B":"Generally increases","C":"Becomes negative","D":"Depends on mic gain"}},
+    {"prompt":"Why is a band plan useful?","answer":"B","options":{"A":"Replaces FCC rules","B":"Helps use accepted subbands","C":"Sets utility rates","D":"Tunes the antenna"}},
+    {"prompt":"What is a dummy load used for?","answer":"B","options":{"A":"Stronger signal","B":"Test without significant radiation","C":"Improve mic tone","D":"Replace a fuse"}},
+    {"prompt":"Digital modes can be used for what?","answer":"B","options":{"A":"Government only","B":"Text, data, and weak-signal work","C":"Satellite only","D":"Not HF"}},
+    {"prompt":"If a 12-volt circuit draws 2 amperes, what power is used?","answer":"C","options":{"A":"6 watts","B":"12 watts","C":"24 watts","D":"48 watts"}},
+    {"prompt":"What is the best response if unsure a transmission is within your privileges?","answer":"C","options":{"A":"Transmit first","B":"Use maximum power","C":"Verify privileges first","D":"Let a friend transmit"}},
+    {"prompt":"Which item best helps protect equipment from nearby lightning energy?","answer":"A","options":{"A":"Proper grounding and lightning protection","B":"Louder audio","C":"Desk lamp","D":"Lower Morse speed"}},
+    {"prompt":"What does a transformer commonly do?","answer":"C","options":{"A":"Stores charge chemically","B":"Converts RF into sound","C":"Transfers energy between windings","D":"Measures SWR"}},
+    {"prompt":"Why is listening before calling CQ important?","answer":"B","options":{"A":"Reduces antenna size","B":"Avoids interfering with ongoing contacts","C":"Increases battery voltage","D":"Changes the band edge"}},
+    {"prompt":"Which condition most affects VHF/UHF line-of-sight coverage?","answer":"A","options":{"A":"Antenna height","B":"Keyboard layout","C":"Call sign suffix","D":"Power supply paint color"}},
+    {"prompt":"What is one common purpose of a tuner or matching network?","answer":"B","options":{"A":"Create AC power from sunlight","B":"Help match the transmitter system to the load","C":"Replace station identification","D":"Increase license class"}},
+    {"prompt":"Which operating habit is most professional during a busy net?","answer":"B","options":{"A":"Long unbroken transmissions","B":"Clear, concise transmissions with pauses","C":"Refuse to identify","D":"Tune up on the active frequency"}},
+    {"prompt":"What does polarization describe?","answer":"A","options":{"A":"Orientation of the electric field","B":"Battery chemistry only","C":"Age of the antenna","D":"Number of repeaters"}},
+    {"prompt":"What can result from poor grounding or unsafe wiring?","answer":"B","options":{"A":"Reduced need for ID","B":"Shock hazard and equipment damage","C":"Automatic Extra privileges","D":"Lower ionospheric absorption"}},
+    {"prompt":"What is most likely to improve weak-signal fixed-station performance?","answer":"A","options":{"A":"Better antenna placement","B":"Cover the radio with cloth","C":"Longest microphone cable possible","D":"Lower the antenna behind a shed"}},
+    {"prompt":"Why may lower HF bands be preferred at night?","answer":"B","options":{"A":"Night makes all antennas resonant","B":"Propagation can favor lower frequencies","C":"FM becomes mandatory","D":"Repeaters stop requiring offsets"}},
+    {"prompt":"What is the basic role of an antenna?","answer":"A","options":{"A":"Convert RF energy to radio waves and back","B":"Lower house voltage","C":"Replace feed line","D":"Store logs"}},
+    {"prompt":"What unit measures resistance?","answer":"C","options":{"A":"Watt","B":"Volt","C":"Ohm","D":"Second"}},
+    {"prompt":"What does an inductor store energy in?","answer":"B","options":{"A":"Electric field","B":"Magnetic field","C":"Display","D":"Fuse element"}},
+    {"prompt":"What is the major hazard when raising an antenna mast?","answer":"B","options":{"A":"Call sign prefixes","B":"Overhead power lines","C":"Notebook paper","D":"Phonetics"}},
+    {"prompt":"HF often supports long-distance contacts by what means?","answer":"B","options":{"A":"DC conduction","B":"Ionospheric propagation","C":"Fuse action","D":"Battery chemistry"}},
+    {"prompt":"A 10-ohm load with 2 amperes has what voltage?","answer":"C","options":{"A":"5 volts","B":"10 volts","C":"20 volts","D":"40 volts"}},
+    {"prompt":"What does a higher antenna often improve on VHF/UHF?","answer":"A","options":{"A":"Line-of-sight coverage","B":"Fuse speed","C":"Battery chemistry","D":"ID interval"}},
+    {"prompt":"Why avoid tuning up on an occupied frequency?","answer":"B","options":{"A":"It wastes electricity only","B":"It can interfere with ongoing communications","C":"It is required for nets","D":"It improves propagation too much"}},
+    {"prompt":"Which statement best describes FM on amateur repeaters?","answer":"A","options":{"A":"Common for local voice communication","B":"Banned on VHF","C":"Used only for Morse code","D":"Never requires offset"}},
+    {"prompt":"Which practice helps reduce accidental repeater interference?","answer":"B","options":{"A":"Transmit immediately after keying up","B":"Pause briefly after pressing PTT","C":"Ignore courtesy tones","D":"Use the wrong offset"}},
+    {"prompt":"If current increases in a fixed resistance, voltage does what?","answer":"A","options":{"A":"Also increases by Ohm's Law","B":"Becomes zero","C":"Always becomes AC","D":"No longer matters"}},
+    {"prompt":"Why might signal reports be weak even with low SWR?","answer":"A","options":{"A":"Antenna placement or efficiency may still be poor","B":"Low SWR guarantees strong signals","C":"Mic has too many buttons","D":"Call sign is too short"}},
+    {"prompt":"What is the most responsible action if equipment smells hot?","answer":"B","options":{"A":"Keep transmitting","B":"Disconnect power and investigate safely","C":"Increase power","D":"Bypass protection"}},
+    {"prompt":"What is the main purpose of station identification rules?","answer":"B","options":{"A":"Obscure the source of signals","B":"Identify transmitting stations","C":"Replace logging in every case","D":"Determine solar flux"}},
+    {"prompt":"Which statement about digital communication is true?","answer":"A","options":{"A":"It can include data and weak-signal modes","B":"It is not radio","C":"It always uses voice microphones","D":"It cannot coexist with band planning"}},
+    {"prompt":"What is one likely result of replacing a fuse with a higher-rated one?","answer":"C","options":{"A":"Better audio quality","B":"Improved antenna match","C":"Higher risk of damage or fire","D":"Lower RF exposure"}},
+    {"prompt":"What does your call sign identify?","answer":"B","options":{"A":"Only your antenna","B":"Your station","C":"Only your power supply","D":"Your feed line"}},
+    {"prompt":"Which mode is narrow bandwidth and useful for weak signals?","answer":"C","options":{"A":"Wideband FM","B":"Analog TV","C":"CW","D":"Broadcast AM only"}},
+    {"prompt":"What feed line is common for amateur stations?","answer":"A","options":{"A":"Coaxial cable","B":"Lamp cord only","C":"Speaker wire only","D":"Ribbon cable for all uses"}},
+    {"prompt":"Which safety rule is most important around outdoor antennas?","answer":"C","options":{"A":"Use the longest mast possible","B":"Work during storms","C":"Stay clear of power lines","D":"Ignore grounding"}},
+    {"prompt":"What is the usual unit of current?","answer":"A","options":{"A":"Ampere","B":"Farad","C":"Henry","D":"Watt-hour"}},
+    {"prompt":"What is the usual unit of voltage?","answer":"B","options":{"A":"Ohm","B":"Volt","C":"Watt","D":"Tesla"}},
+    {"prompt":"What is a resistor used for?","answer":"A","options":{"A":"Limiting current","B":"Making AC from DC","C":"Radiating RF","D":"Creating speech"}},
+    {"prompt":"What is a transistor commonly used for?","answer":"D","options":{"A":"Cooling feed line","B":"Changing call signs","C":"Grounding a tower","D":"Amplification or switching"}},
+    {"prompt":"What is the advantage of a higher-gain antenna?","answer":"B","options":{"A":"It removes the need for ID","B":"It can concentrate energy in a desired pattern","C":"It makes all bands resonate","D":"It eliminates losses"}},
+    {"prompt":"What should you do before using a new repeater?","answer":"C","options":{"A":"Transmit a long carrier first","B":"Assume the standard tone","C":"Check its published settings","D":"Use full power immediately"}},
+    {"prompt":"What does line-of-sight mean for VHF/UHF?","answer":"A","options":{"A":"Obstacles and curvature matter","B":"Signals always bounce worldwide","C":"Only Morse works","D":"Power is irrelevant"}},
+    {"prompt":"What is a common handheld radio antenna tradeoff?","answer":"D","options":{"A":"More size, less performance always","B":"No effect from antenna length","C":"It works only indoors","D":"Convenience can reduce efficiency"}},
+    {"prompt":"Why is proper grounding important?","answer":"B","options":{"A":"It increases Morse speed","B":"It helps with safety and equipment protection","C":"It changes your license class","D":"It removes all noise"}},
+    {"prompt":"What can a dummy load help prevent?","answer":"A","options":{"A":"Unwanted on-air radiation during testing","B":"Battery charging","C":"Call sign errors","D":"Ionospheric fading"}},
+    {"prompt":"When should you identify your station?","answer":"C","options":{"A":"Only when asked","B":"Only on repeaters","C":"According to station ID rules","D":"Only during emergencies"}},
+    {"prompt":"Which part of the spectrum is 2 meters?","answer":"B","options":{"A":"UHF","B":"VHF","C":"LF","D":"Audio"}},
+    {"prompt":"What is 70 centimeters commonly classified as?","answer":"A","options":{"A":"UHF","B":"HF","C":"MF","D":"ELF"}},
+    {"prompt":"What happens when feed line length increases?","answer":"C","options":{"A":"Loss always disappears","B":"Signal becomes encrypted","C":"Loss can increase","D":"Call sign changes"}},
+    {"prompt":"What is resonance in an antenna system?","answer":"D","options":{"A":"A type of microphone setting","B":"A logging method","C":"A repeater tone","D":"A condition related to efficient operation at a frequency"}},
+    {"prompt":"What is a primary reason to use phonetics in poor conditions?","answer":"A","options":{"A":"Improve copy accuracy","B":"Increase battery life","C":"Reduce SWR","D":"Tune the feed line"}},
+    {"prompt":"What is one benefit of digital weak-signal modes?","answer":"B","options":{"A":"They remove all regulations","B":"They can decode very weak signals","C":"They require no computer","D":"They work only on UHF"}},
+    {"prompt":"What does P = V x I calculate?","answer":"D","options":{"A":"Resistance","B":"Frequency","C":"Wavelength","D":"Power"}},
+    {"prompt":"If voltage is fixed and resistance increases, current usually does what?","answer":"B","options":{"A":"Increases","B":"Decreases","C":"Becomes RF","D":"Doubles automatically"}},
+    {"prompt":"If a station is too close to power lines, what is the best choice?","answer":"C","options":{"A":"Operate quickly","B":"Use rubber gloves only","C":"Relocate or redesign the installation","D":"Lower the fuse rating"}},
+    {"prompt":"What is a common reason to use low power on a repeater?","answer":"A","options":{"A":"Use only as much power as needed","B":"Hide your signal","C":"Change modulation","D":"Avoid identification"}},
+    {"prompt":"What is one purpose of a band plan on HF?","answer":"D","options":{"A":"It changes FCC rules","B":"It tunes antennas","C":"It sets exam dates","D":"It encourages compatible mode use"}},
+    {"prompt":"What is an example of good repeater courtesy?","answer":"B","options":{"A":"Kerchunking repeatedly","B":"Leaving pauses between transmissions","C":"Never identifying","D":"Tuning up on the machine"}},
+    {"prompt":"Why are outdoor feed line connectors often weatherproofed?","answer":"C","options":{"A":"To change impedance","B":"To increase voice range only","C":"To reduce water intrusion and loss","D":"To create grounding"}},
+    {"prompt":"What does RF stand for?","answer":"A","options":{"A":"Radio frequency","B":"Resistance factor","C":"Repeater function","D":"Radiation fuse"}},
+    {"prompt":"What is a likely effect of corroded antenna connections?","answer":"D","options":{"A":"Automatic resonance","B":"Higher battery voltage","C":"Lower safety risk","D":"Poor performance and possible intermittent operation"}},
+    {"prompt":"What is one reason to keep transmissions concise during nets?","answer":"B","options":{"A":"To avoid learning procedure","B":"To keep traffic efficient","C":"To reduce license privileges","D":"To disable the repeater"}},
+    {"prompt":"What does an antenna tuner mainly tune?","answer":"C","options":{"A":"The ionosphere","B":"The microphone","C":"The impedance relationship seen by the transmitter","D":"Your license record"}},
+    {"prompt":"What is the benefit of listening before using a simplex frequency?","answer":"A","options":{"A":"It helps avoid interrupting existing communications","B":"It raises output power","C":"It narrows bandwidth","D":"It changes your mode"}},
+    {"prompt":"What is one sign of a poor antenna location?","answer":"B","options":{"A":"Correct call sign format","B":"Nearby obstructions reducing performance","C":"Use of coax","D":"Low microphone gain"}},
+    {"prompt":"What does DC mean?","answer":"D","options":{"A":"Digital current","B":"Directional coax","C":"Dynamic coupling","D":"Direct current"}},
+    {"prompt":"What does AC mean?","answer":"A","options":{"A":"Alternating current","B":"Antenna coupling","C":"Automatic control","D":"Amplitude carrier"}},
+    {"prompt":"What is one reason to avoid overdriving audio on voice modes?","answer":"C","options":{"A":"It raises resistance","B":"It changes your call sign","C":"It can distort your transmitted signal","D":"It lowers your antenna"}},
+    {"prompt":"What is a practical use of a wattmeter?","answer":"B","options":{"A":"Measuring resistance directly","B":"Checking RF power output","C":"Finding tone access","D":"Setting clock time"}},
+    {"prompt":"What can solar activity affect on HF?","answer":"D","options":{"A":"Fuse ratings","B":"Battery chemistry","C":"Microphone impedance only","D":"Propagation conditions"}},
+    {"prompt":"What is one key benefit of an external mobile antenna versus a handheld rubber duck?","answer":"A","options":{"A":"Often better efficiency and placement","B":"It removes the need for a license","C":"It always has zero SWR","D":"It works without a radio"}},
+    {"prompt":"What is a common cause of reduced battery life in portable operation?","answer":"C","options":{"A":"Using phonetics","B":"Listening first","C":"High transmit power and long transmissions","D":"Using a call sign"}},
+    {"prompt":"What is the first step if a radio suddenly behaves abnormally?","answer":"B","options":{"A":"Increase power","B":"Check safely and troubleshoot systematically","C":"Bypass the fuse","D":"Transmit anyway"}},
+    {"prompt":"What is one reason CW remains useful?","answer":"A","options":{"A":"It can be effective with weak signals and narrow bandwidth","B":"It uses the most bandwidth","C":"It requires internet access","D":"It is only for repeaters"}},
+    {"prompt":"What is one reason operators use headsets in noisy environments?","answer":"D","options":{"A":"To lower RF exposure","B":"To change frequency","C":"To increase SWR","D":"To improve received intelligibility"}},
+    {"prompt":"What is the likely result of transmitting outside your privileges?","answer":"C","options":{"A":"Higher gain","B":"Better propagation","C":"Improper operation and possible enforcement issues","D":"Automatic upgrade"}},
+    {"prompt":"What is one advantage of keeping a simple station log?","answer":"B","options":{"A":"It changes FCC rules","B":"It helps you review contacts and operating issues","C":"It lowers feed line loss","D":"It replaces identification"}},
+    {"prompt":"What is one purpose of a net control station?","answer":"A","options":{"A":"Organize and manage net traffic","B":"Jam weak stations","C":"Provide utility power","D":"Tune all participants"}},
+    {"prompt":"What is a common sign of overload or interference in nearby electronics?","answer":"D","options":{"A":"Higher solar flux","B":"Longer wavelength","C":"Perfect modulation","D":"Distorted or unintended audio or behavior"}},
+    {"prompt":"What is one way to reduce accidental on-air interference while testing?","answer":"B","options":{"A":"Use higher power","B":"Use a dummy load when appropriate","C":"Skip identification","D":"Use random frequencies"}},
+    {"prompt":"What is one reason to keep antennas away from occupied areas when possible?","answer":"C","options":{"A":"To increase feed line loss","B":"To reduce battery drain","C":"To help manage safety and exposure concerns","D":"To change polarization"}},
+    {"prompt":"What is one reason to verify polarity before connecting DC equipment?","answer":"A","options":{"A":"Incorrect polarity can damage equipment","B":"It increases Morse speed","C":"It lowers SWR","D":"It changes call signs"}},
+    {"prompt":"What is the basic meaning of impedance?","answer":"D","options":{"A":"Only DC resistance","B":"Only antenna height","C":"A repeater access method","D":"Opposition to current in AC/RF circuits"}},
+    {"prompt":"What is one likely result of a poor microphone connection?","answer":"B","options":{"A":"Higher gain antenna","B":"Weak or absent transmit audio","C":"Lower battery temperature","D":"Automatic digital mode"}},
+    {"prompt":"What should you do before climbing or servicing a tower or mast system?","answer":"C","options":{"A":"Transmit first","B":"Assume it is safe","C":"Use proper safety procedures and disconnect hazards","D":"Increase output power"}},
+    {"prompt":"What is one benefit of using the minimum necessary bandwidth?","answer":"A","options":{"A":"It helps spectrum efficiency","B":"It increases tower height","C":"It removes the need for IDs","D":"It changes propagation"}},
+    {"prompt":"What is one common reason to use simplex instead of a repeater?","answer":"B","options":{"A":"To avoid radios entirely","B":"Direct station-to-station communication may be sufficient","C":"To disable tones","D":"To increase line loss"}}
+  ]
+}</script>
+    <script>
+const questionCountPerExam = 20;
+const tabButtons = Array.from(document.querySelectorAll("[data-tab-target]"));
+const tabPanels = Array.from(document.querySelectorAll("[data-tab-panel]"));
+let defaultScoreText = "";
+let examState = {};
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", () => activateTab(button.dataset.tabTarget));
+});
+
+document.addEventListener("click", handleClick);
+
+initializeApp();
+
+async function initializeApp() {
+  try {
+    const studyData = await readStudyData();
+    defaultScoreText = `Random ${questionCountPerExam} questions from ${studyData.questions.length} available`;
+    examState = createExamSets(studyData.examConfigs, studyData.questions);
+
+    studyData.examConfigs.forEach((config) => {
+      renderExam(config, examState[config.id]);
+    });
+  } catch (error) {
+    console.error(error);
+    renderLoadError();
+  }
+}
+
+async function readStudyData() {
+  const element = document.getElementById("study-data");
+  if (element) {
+    const parsed = JSON.parse(element.textContent);
+    validateStudyData(parsed);
+    return parsed;
+  }
+
+  const response = await fetch("./content/question-bank.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Unable to load study data: ${response.status} ${response.statusText}`);
+  }
+
+  const parsed = await response.json();
+  validateStudyData(parsed);
+  return parsed;
+}
+
+function validateStudyData(parsed) {
+  if (!Array.isArray(parsed.examConfigs) || !Array.isArray(parsed.questions)) {
+    throw new Error("Study data payload is invalid.");
+  }
+}
+
+function renderLoadError() {
+  const panel = document.querySelector('[data-tab-panel="guide"]');
+  if (!panel) {
+    return;
+  }
+
+  panel.innerHTML = `
+    <div class="guide-grid">
+      <article class="card prose">
+        <h2>Unable to Load Study Data</h2>
+        <p>The question bank could not be loaded. Refresh the page or verify that <code>content/question-bank.json</code> is being served.</p>
+      </article>
+    </div>
+  `;
+}
+
+function createExamSets(examConfigs, questionBank) {
+  const requiredQuestions = examConfigs.length * questionCountPerExam;
+  if (questionBank.length < requiredQuestions) {
+    throw new Error(`Expected at least ${requiredQuestions} questions, received ${questionBank.length}.`);
+  }
+
+  const pool = shuffleArray(questionBank.slice());
+  const state = {};
+
+  examConfigs.forEach((config, index) => {
+    const start = index * questionCountPerExam;
+    state[config.id] = pool.slice(start, start + questionCountPerExam);
+  });
+
+  return state;
+}
+
+function shuffleArray(items) {
+  for (let index = items.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    const next = items[index];
+    items[index] = items[swapIndex];
+    items[swapIndex] = next;
+  }
+
+  return items;
+}
+
+function activateTab(target) {
+  const activeButton = tabButtons.find((item) => item.dataset.tabTarget === target);
+
+  tabButtons.forEach((item) => {
+    item.classList.toggle("is-active", item === activeButton);
+  });
+
+  tabPanels.forEach((panel) => {
+    panel.classList.toggle("is-active", panel.dataset.tabPanel === target);
+  });
+}
+
+function renderExam(config, questions) {
+  const panel = document.querySelector(`[data-tab-panel="${config.id}"]`);
+  if (!panel) {
+    return;
+  }
+
+  panel.innerHTML = `
+    <div class="exam-shell">
+      <div class="exam-intro">
+        <div>
+          <h2>${config.title}</h2>
+          <p>${config.description}</p>
+        </div>
+        <div class="exam-actions">
+          <button class="action-button primary" type="button" data-exam-action="score">Score Exam</button>
+          <button class="action-button secondary" type="button" data-exam-action="reset">Reset</button>
+          <output class="score-output" data-score-output aria-live="polite">${defaultScoreText}</output>
+        </div>
+      </div>
+      <div class="question-list" data-question-list></div>
+    </div>
+  `;
+
+  const list = panel.querySelector("[data-question-list]");
+  questions.forEach((question, index) => {
+    const fieldset = document.createElement("fieldset");
+    fieldset.className = "question-card";
+    fieldset.innerHTML = `
+      <h3>${index + 1}. ${question.prompt}</h3>
+      <div class="option-list">
+        ${Object.entries(question.options)
+          .map(
+            ([key, value]) => `
+              <label class="option-item">
+                <input type="radio" name="${config.id}-q-${index}" value="${key}" />
+                <span><strong>${key}.</strong> ${value}</span>
+              </label>
+            `
+          )
+          .join("")}
+      </div>
+      <p class="feedback" data-feedback></p>
+    `;
+    list.appendChild(fieldset);
+  });
+}
+
+function handleClick(event) {
+  const examButton = event.target.closest("[data-exam-action]");
+  if (examButton) {
+    const panel = examButton.closest("[data-tab-panel]");
+    const questions = examState[panel?.dataset.tabPanel];
+    if (!panel || !questions) {
+      return;
+    }
+
+    if (examButton.dataset.examAction === "score") {
+      scoreExam(panel, questions);
+      return;
+    }
+
+    if (examButton.dataset.examAction === "reset") {
+      resetExam(panel);
+      return;
+    }
+  }
+
+  const ohmsButton = event.target.closest("[data-ohms-action]");
+  if (!ohmsButton) {
+    return;
+  }
+
+  if (ohmsButton.dataset.ohmsAction === "solve") {
+    solveOhmsLaw();
+    return;
+  }
+
+  if (ohmsButton.dataset.ohmsAction === "clear") {
+    clearOhmsLaw();
+  }
+}
+
+function scoreExam(panel, questions) {
+  const questionCards = Array.from(panel.querySelectorAll(".question-card"));
+  let answered = 0;
+  let correct = 0;
+
+  questionCards.forEach((card, index) => {
+    const feedback = card.querySelector("[data-feedback]");
+    const selected = card.querySelector("input:checked");
+    const question = questions[index];
+    const correctText = `${question.answer}. ${question.options[question.answer]}`;
+
+    feedback.className = "feedback";
+
+    if (!selected) {
+      feedback.classList.add("missed");
+      feedback.textContent = `Unanswered. Correct answer: ${correctText}`;
+      return;
+    }
+
+    answered += 1;
+    if (selected.value === question.answer) {
+      correct += 1;
+      feedback.classList.add("correct");
+      feedback.textContent = "Correct";
+      return;
+    }
+
+    feedback.classList.add("missed");
+    feedback.textContent = `Missed. Correct answer: ${correctText}`;
+  });
+
+  const percent = Math.round((correct / questions.length) * 100);
+  panel.querySelector("[data-score-output]").textContent =
+    `Answered ${answered}/${questions.length} | Score ${correct}/${questions.length} | ${percent}%`;
+}
+
+function resetExam(panel) {
+  panel.querySelectorAll("input:checked").forEach((input) => {
+    input.checked = false;
+  });
+
+  panel.querySelectorAll("[data-feedback]").forEach((feedback) => {
+    feedback.className = "feedback";
+    feedback.textContent = "";
+  });
+
+  panel.querySelector("[data-score-output]").textContent = defaultScoreText;
+}
+
+function solveOhmsLaw() {
+  const values = {
+    voltage: readOhmsValue("voltage"),
+    current: readOhmsValue("current"),
+    resistance: readOhmsValue("resistance"),
+    power: readOhmsValue("power"),
+  };
+  const result = document.querySelector("[data-ohms-result]");
+  const knownValues = Object.keys(values).filter((key) => values[key] !== null);
+
+  if (!result) {
+    return;
+  }
+
+  if (knownValues.length !== 2) {
+    result.textContent = "Enter exactly two values so the calculator can solve the rest.";
+    return;
+  }
+
+  const solved = computeOhmsLaw(values);
+  if (!solved) {
+    result.textContent = "Those values do not form a valid positive Ohm's Law combination.";
+    return;
+  }
+
+  writeOhmsValue("voltage", solved.voltage);
+  writeOhmsValue("current", solved.current);
+  writeOhmsValue("resistance", solved.resistance);
+  writeOhmsValue("power", solved.power);
+  result.textContent = "Solved using Ohm's Law and the power equations.";
+}
+
+function clearOhmsLaw() {
+  ["voltage", "current", "resistance", "power"].forEach((key) => {
+    const input = document.querySelector(`[data-ohms-input="${key}"]`);
+    if (input) {
+      input.value = "";
+    }
+  });
+
+  const result = document.querySelector("[data-ohms-result]");
+  if (result) {
+    result.textContent = "Enter two known values such as voltage and resistance.";
+  }
+}
+
+function readOhmsValue(key) {
+  const input = document.querySelector(`[data-ohms-input="${key}"]`);
+  if (!input) {
+    return null;
+  }
+
+  const rawValue = input.value.trim();
+  if (!rawValue) {
+    return null;
+  }
+
+  const parsed = Number(rawValue);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    return null;
+  }
+
+  return parsed;
+}
+
+function writeOhmsValue(key, value) {
+  const input = document.querySelector(`[data-ohms-input="${key}"]`);
+  if (input) {
+    input.value = formatOhmsValue(value);
+  }
+}
+
+function formatOhmsValue(value) {
+  const rounded = value >= 100 ? value.toFixed(2) : value.toFixed(4);
+  return String(Number(rounded));
+}
+
+function computeOhmsLaw(values) {
+  const { voltage, current, resistance, power } = values;
+
+  if (voltage !== null && current !== null) {
+    return finalizeOhmsSolution(voltage, current, voltage / current, voltage * current);
+  }
+  if (voltage !== null && resistance !== null) {
+    return finalizeOhmsSolution(voltage, voltage / resistance, resistance, (voltage * voltage) / resistance);
+  }
+  if (voltage !== null && power !== null) {
+    const nextCurrent = power / voltage;
+    return finalizeOhmsSolution(voltage, nextCurrent, voltage / nextCurrent, power);
+  }
+  if (current !== null && resistance !== null) {
+    return finalizeOhmsSolution(current * resistance, current, resistance, current * current * resistance);
+  }
+  if (current !== null && power !== null) {
+    const nextVoltage = power / current;
+    return finalizeOhmsSolution(nextVoltage, current, nextVoltage / current, power);
+  }
+  if (resistance !== null && power !== null) {
+    const nextCurrent = Math.sqrt(power / resistance);
+    return finalizeOhmsSolution(nextCurrent * resistance, nextCurrent, resistance, power);
+  }
+
+  return null;
+}
+
+function finalizeOhmsSolution(voltage, current, resistance, power) {
+  const values = [voltage, current, resistance, power];
+  if (!values.every((value) => Number.isFinite(value) && value > 0)) {
+    return null;
+  }
+
+  return {
+    voltage,
+    current,
+    resistance,
+    power,
+  };
+}
+    </script>
   </body>
 </html>
+
