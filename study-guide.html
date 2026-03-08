@@ -65,6 +65,27 @@ select {
   padding: 20px;
 }
 
+.hero-layout {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.hero-art {
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 24px rgba(63, 44, 24, 0.18);
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
 .eyebrow {
   margin: 0 0 10px;
   font-size: 0.74rem;
@@ -332,6 +353,16 @@ h3 {
     padding: 28px;
   }
 
+  .hero-layout {
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .hero-art {
+    width: 124px;
+    height: 124px;
+  }
+
   .tab-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -378,11 +409,16 @@ h3 {
   <body>
     <main class="study-app">
       <header class="hero">
-        <p class="eyebrow">Browser Edition</p>
-        <h1>Stumpwizards Ham Study Guide</h1>
-        <p class="lede">
-          Cross-platform ham radio exam prep for macOS and Windows. Open this file in any modern browser.
-        </p>
+        <div class="hero-layout">
+          <img class="hero-art" src="https://raw.githubusercontent.com/Stumpwizard/Ham-Study-Guide/master/Stumpwizard.png" alt="Stumpwizard illustration" />
+          <div class="hero-copy">
+            <p class="eyebrow">Browser Edition</p>
+            <h1>Stumpwizards Ham Study Guide</h1>
+            <p class="lede">
+              Cross-platform ham radio exam prep for macOS and Windows. Open this file in any modern browser.
+            </p>
+          </div>
+        </div>
       </header>
 
       <nav class="tab-list" aria-label="Sections">
@@ -1056,6 +1092,8 @@ window.clearOhmsLaw = clearOhmsLaw;window.resetExamById = function(id) {
     </script>
   </body>
 </html>
+
+
 
 
 
