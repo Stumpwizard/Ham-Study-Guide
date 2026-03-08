@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository contains the Stumpwizards Ham Study Guide browser app and related assets. Future agents should treat the browser app as the primary maintained product unless the user explicitly asks for Windows app work.
+This repository contains the Stumpwizards Ham Study Guide browser app and related assets
 
 ## Source Of Truth
 
@@ -29,7 +29,6 @@ This repository contains the Stumpwizards Ham Study Guide browser app and relate
 
 ## App Behavior To Preserve
 
-- Keep all 112 original questions.
 - The study guide and interactive Q&A app are the deployable product.
 - The Ohm’s Law calculator belongs directly below the Ohm’s Law graphic.
 - `public/404.html` is intentionally a custom error page, not a copy of the main app.
