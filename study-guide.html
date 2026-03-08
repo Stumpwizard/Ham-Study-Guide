@@ -67,14 +67,16 @@ select {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 14px;
   align-items: center;
+  justify-items: center;
+  text-align: center;
 }
 
 .hero-art {
-  width: 96px;
-  height: 96px;
+  width: 112px;
+  height: 112px;
   border-radius: 20px;
   object-fit: cover;
   object-position: center top;
@@ -84,6 +86,12 @@ select {
 
 .hero-copy {
   min-width: 0;
+}
+
+.hero-copy .lede {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .eyebrow {
@@ -104,7 +112,7 @@ p {
 h1 {
   margin-bottom: 10px;
   font-size: clamp(1.9rem, 8vw, 3.4rem);
-  line-height: 0.96;
+  line-height: 1.02;
 }
 
 h2 {
@@ -356,11 +364,19 @@ h3 {
   .hero-layout {
     grid-template-columns: 124px minmax(0, 1fr);
     gap: 20px;
+    justify-items: stretch;
+    text-align: left;
   }
 
   .hero-art {
     width: 124px;
     height: 124px;
+  }
+
+  .hero-copy .lede {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 60ch;
   }
 
   .tab-list {
@@ -1092,6 +1108,8 @@ window.clearOhmsLaw = clearOhmsLaw;window.resetExamById = function(id) {
     </script>
   </body>
 </html>
+
+
 
 
 
