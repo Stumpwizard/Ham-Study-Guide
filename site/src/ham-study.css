@@ -57,6 +57,35 @@ select {
   padding: 20px;
 }
 
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.hero-art {
+  width: 112px;
+  height: 112px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 24px rgba(63, 44, 24, 0.18);
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-copy .lede {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .eyebrow {
   margin: 0 0 10px;
   font-size: 0.74rem;
@@ -68,6 +97,7 @@ select {
 h1,
 h2,
 h3,
+h4,
 p {
   margin-top: 0;
 }
@@ -75,7 +105,7 @@ p {
 h1 {
   margin-bottom: 10px;
   font-size: clamp(1.9rem, 8vw, 3.4rem);
-  line-height: 0.96;
+  line-height: 1.02;
 }
 
 h2 {
@@ -172,6 +202,85 @@ h3 {
 .prose li,
 .summary-panel li {
   margin-bottom: 8px;
+}
+
+.ohms-law-figure {
+  margin: 16px 0 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #f8f2e7;
+}
+
+.ohms-law-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ohms-law-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ohms-law-chip {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(21, 94, 99, 0.08);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.ohms-law-calculator {
+  margin: 14px 0 18px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.ohms-law-calculator p {
+  margin-bottom: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.ohms-law-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ohms-law-field {
+  display: grid;
+  gap: 6px;
+}
+
+.ohms-law-field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.ohms-law-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffdf8;
+}
+
+.ohms-law-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ohms-law-result {
+  min-height: 1.4em;
+  margin: 12px 0 0;
 }
 
 .summary-panel {
@@ -294,6 +403,24 @@ h3 {
 
   .hero {
     padding: 28px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 20px;
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .hero-art {
+    width: 124px;
+    height: 124px;
+  }
+
+  .hero-copy .lede {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 60ch;
   }
 
   .tab-list {

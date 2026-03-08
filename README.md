@@ -1,34 +1,39 @@
 # Stumpwizards Ham Study Guide
 
-## Live App
+This repository contains the browser-based ham radio study guide deployed to GitHub Pages and the Windows desktop build.
 
-Open the study guide in your browser here:
+## Live App
 
 [https://stumpwizard.github.io/Ham-Study-Guide/](https://stumpwizard.github.io/Ham-Study-Guide/)
 
-This project contains the ham radio operator study guide deliverables for Windows and browser use.
+## Browser App
 
-## Files
+- Source HTML lives in `site/index.html`
+- Source styles live in `site/src/ham-study.css`
+- Source browser logic lives in `site/src/ham-study-app.js`
+- Study questions and exam metadata live in `site/content/question-bank.json`
+- Generated deploy output is written to `public/` and is not tracked in git
 
-- `study-guide.html`: self-contained browser version for Windows, macOS, and mobile browsers
-- `ham-radio-study-guide.md`: Markdown study guide source
-- `Stumpwizards Ham Study Guide.exe`: Windows desktop build
-- `HamRadioStudyGuideApp.cs`: WinForms source for the Windows build
+## Local Build
 
-## Browser Use
+```bash
+npm ci
+npm run build
+```
 
-Use the live GitHub Pages app at [https://stumpwizard.github.io/Ham-Study-Guide/](https://stumpwizard.github.io/Ham-Study-Guide/) or open `study-guide.html` in a modern browser locally. It includes the study content, an Ohm's Law graphic, calculator, and randomized 20-question exams drawn from a 100-question bank.
+Open `public/index.html` in a modern browser after building. The app includes the study guide content, the Ohm's Law graphic and calculator, and randomized 20-question exams drawn from the original 112-question bank.
 
 ## GitHub Pages
 
-GitHub Actions deploys the browser version to GitHub Pages from `study-guide.html`.
+GitHub Actions builds the site from `site/` and uploads `public/` to Pages.
 
 After pushing this repository to GitHub:
 
 1. Push to `main` or `master`.
 2. In the GitHub repository settings, set Pages to use `GitHub Actions` as the source.
-3. The workflow publishes the site with `study-guide.html` served as the Pages `index.html`.
+3. The deploy workflow runs `npm ci`, `npm run build`, and publishes `public/index.html` as the Pages entrypoint.
 
 ## Windows App
 
-Launch `Stumpwizards Ham Study Guide.exe` on Windows.
+- `Stumpwizards Ham Study Guide.exe`: Windows desktop build
+- `HamRadioStudyGuideApp.cs`: WinForms source

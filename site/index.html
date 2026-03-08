@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#155e63" />
+    <title>Stumpwizards Ham Study Guide</title>
+    <link rel="stylesheet" href="./src/ham-study.css" />
+  </head>
+  <body>
+    <main class="study-app">
+      <header class="hero">
+        <div class="hero-layout">
+          <img class="hero-art" src="./Stumpwizard.png" alt="Stumpwizard illustration" />
+          <div class="hero-copy">
+            <p class="eyebrow">Browser Edition</p>
+            <h1>Stumpwizards Ham Study Guide</h1>
+            <p class="lede">
+              Cross-platform ham radio exam prep for macOS and Windows. Open this file in any modern browser.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <nav class="tab-list" aria-label="Sections">
+        <button class="tab-button is-active" type="button" data-tab-target="guide">Study Guide</button>
+        <button class="tab-button" type="button" data-tab-target="exam-1">Technician</button>
+        <button class="tab-button" type="button" data-tab-target="exam-2">General</button>
+        <button class="tab-button" type="button" data-tab-target="exam-3">Amateur Extra</button>
+      </nav>
+
+      <section class="tab-panel is-active" data-tab-panel="guide">
+        <div class="guide-grid">
+          <article class="card prose">
+            <h2>License Overview</h2>
+            <h3>Technician</h3>
+            <ul>
+              <li>Entry-level amateur license</li>
+              <li>Strong starting point for VHF/UHF operating, repeaters, emergency communications, and basic HF privileges</li>
+              <li>Core topics: rules, operating practice, electronics basics, antennas, and safety</li>
+            </ul>
+            <h3>General</h3>
+            <ul>
+              <li>Expands HF privileges significantly</li>
+              <li>Best fit for long-distance communication on popular HF bands</li>
+              <li>Core topics: propagation, operating practice, intermediate circuits, digital modes, and station setup</li>
+            </ul>
+            <h3>Amateur Extra</h3>
+            <ul>
+              <li>Highest U.S. license class</li>
+              <li>Broadest operating privileges</li>
+              <li>Core topics: advanced electronics, regulations, and in-depth RF concepts</li>
+            </ul>
+            <h2>How To Study Efficiently</h2>
+            <ol>
+              <li>Learn concepts first instead of memorizing letter patterns.</li>
+              <li>Study in shorter daily sessions.</li>
+              <li>Keep a band plan nearby when reviewing privileges.</li>
+              <li>Practice phonetics, logging, and operating language out loud.</li>
+              <li>Spend more time on missed questions than on repeat passes through correct ones.</li>
+            </ol>
+            <h2>Core Knowledge Areas</h2>
+            <h3>Rules and Operating Practice</h3>
+            <ul>
+              <li>The FCC regulates amateur radio in the United States.</li>
+              <li>Your call sign identifies your station.</li>
+              <li>You must operate only within your license privileges.</li>
+              <li>The control operator is responsible for proper station operation.</li>
+              <li>Stations must avoid harmful interference.</li>
+            </ul>
+            <h3>Frequency, Wavelength, and Modes</h3>
+            <ul>
+              <li>Frequency is measured in hertz.</li>
+              <li>Higher frequency means shorter wavelength.</li>
+              <li>HF is commonly used for long-distance skywave communication.</li>
+              <li>VHF and UHF are commonly used for local and regional communication.</li>
+              <li>FM is common on repeaters, SSB is common on HF, and CW remains useful in weak-signal conditions.</li>
+            </ul>
+            <h3>Repeaters</h3>
+            <ul>
+              <li>A repeater receives on one frequency and retransmits on another.</li>
+              <li>Offset is the difference between repeater input and output.</li>
+              <li>A CTCSS tone may be required for access.</li>
+              <li>Listen first to avoid doubling with another station.</li>
+            </ul>
+            <h3>Electrical Basics</h3>
+            <ul>
+              <li>Voltage is electrical pressure.</li>
+              <li>Current is the flow of charge.</li>
+              <li>Resistance opposes current flow.</li>
+              <li>Power is measured in watts.</li>
+              <li>Ohm's Law: V = I x R, I = V / R, R = V / I.</li>
+              <li>Power equations: P = V x I, P = I^2 x R, P = V^2 / R.</li>
+            </ul>
+            <figure class="ohms-law-figure">
+              <svg viewBox="0 0 360 280" role="img" aria-label="Ohm's Law wheel showing voltage, current, resistance, and power formulas">
+                <circle cx="180" cy="140" r="118" fill="#fffaf1" stroke="rgba(31, 42, 46, 0.12)" stroke-width="2" />
+                <line x1="180" y1="24" x2="180" y2="256" stroke="rgba(31, 42, 46, 0.14)" stroke-width="2" />
+                <line x1="62" y1="140" x2="298" y2="140" stroke="rgba(31, 42, 46, 0.14)" stroke-width="2" />
+                <path d="M180 22 A118 118 0 0 1 298 140 L180 140 Z" fill="#dcefed" />
+                <path d="M298 140 A118 118 0 0 1 180 258 L180 140 Z" fill="#f7dfc3" />
+                <path d="M180 258 A118 118 0 0 1 62 140 L180 140 Z" fill="#efe5cf" />
+                <path d="M62 140 A118 118 0 0 1 180 22 L180 140 Z" fill="#e8efe0" />
+                <text x="180" y="72" text-anchor="middle" font-size="28" font-weight="700" fill="#155e63">P</text>
+                <text x="236" y="145" text-anchor="middle" font-size="28" font-weight="700" fill="#8b4f1d">V</text>
+                <text x="180" y="214" text-anchor="middle" font-size="28" font-weight="700" fill="#6c5b2f">R</text>
+                <text x="124" y="145" text-anchor="middle" font-size="28" font-weight="700" fill="#355f3b">I</text>
+                <text x="180" y="132" text-anchor="middle" font-size="13" fill="#1f2a2e">Power</text>
+                <text x="180" y="148" text-anchor="middle" font-size="13" fill="#1f2a2e">Voltage</text>
+                <text x="180" y="164" text-anchor="middle" font-size="13" fill="#1f2a2e">Resistance / Current</text>
+              </svg>
+              <div class="ohms-law-strip">
+                <div class="ohms-law-chip">V = I x R</div>
+                <div class="ohms-law-chip">I = V / R</div>
+                <div class="ohms-law-chip">R = V / I</div>
+              </div>
+            </figure>
+            <h3>Components and Circuits</h3>
+            <ul>
+              <li>Resistors limit current.</li>
+              <li>Capacitors store energy in an electric field.</li>
+              <li>Inductors store energy in a magnetic field.</li>
+              <li>Fuses protect against overcurrent.</li>
+              <li>Transformers transfer energy between windings.</li>
+              <li>Diodes mainly allow current in one direction.</li>
+            </ul>
+            <h3>Antennas and Feed Lines</h3>
+            <ul>
+              <li>Antennas convert RF energy to radio waves and back again.</li>
+              <li>Coaxial cable is a common amateur feed line.</li>
+              <li>Feed line loss generally increases with frequency and length.</li>
+              <li>SWR indicates how well the antenna system matches the transmission line.</li>
+              <li>Low SWR helps, but it does not guarantee an effective antenna.</li>
+            </ul>
+            <h3>Propagation and Safety</h3>
+            <ul>
+              <li>VHF/UHF is often line-of-sight.</li>
+              <li>HF can support long-distance contacts through ionospheric propagation.</li>
+              <li>Solar conditions and time of day affect band behavior.</li>
+              <li>Keep antennas and masts clear of power lines.</li>
+              <li>Use proper grounding and never bypass protective devices.</li>
+            </ul>
+            <h2>Test-Day Strategy</h2>
+            <ol>
+              <li>Answer easy questions first.</li>
+              <li>Flag calculations and return to them.</li>
+              <li>Read words like best, most, and primary carefully.</li>
+              <li>If two answers seem close, choose the safer or more compliant one.</li>
+            </ol>
+
+            <section class="ohms-law-calculator" data-ohms-calculator>
+              <h4>Ohm's Law Calculator</h4>
+              <p>Enter any two values to solve the other electrical quantities.</p>
+              <div class="ohms-law-fields">
+                <div class="ohms-law-field">
+                  <label for="ohms-voltage">Voltage (V)</label>
+                  <input id="ohms-voltage" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="voltage" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-current">Current (I)</label>
+                  <input id="ohms-current" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="current" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-resistance">Resistance (R)</label>
+                  <input id="ohms-resistance" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="resistance" />
+                </div>
+                <div class="ohms-law-field">
+                  <label for="ohms-power">Power (P)</label>
+                  <input id="ohms-power" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="power" />
+                </div>
+              </div>
+              <div class="ohms-law-actions">
+                <button class="action-button primary" type="button" data-ohms-action="solve">Calculate</button>
+                <button class="action-button secondary" type="button" data-ohms-action="clear">Clear</button>
+              </div>
+              <p class="ohms-law-result" data-ohms-result>Enter two known values such as voltage and resistance.</p>
+            </section>
+          </article>
+
+          <aside class="card summary-panel">
+            <h2>Focus Areas</h2>
+            <ul>
+              <li>FCC operating responsibilities</li>
+              <li>Repeaters, offsets, and tones</li>
+              <li>Ohm's Law and power calculations</li>
+              <li>Antennas, feed lines, and SWR</li>
+              <li>HF and VHF/UHF propagation</li>
+              <li>Electrical and antenna safety</li>
+            </ul>
+            <h2>Study Method</h2>
+            <ol>
+              <li>Read the guide once straight through.</li>
+              <li>Take one exam without notes.</li>
+              <li>Review only missed questions.</li>
+              <li>Repeat until scores are consistently strong.</li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-tab-panel="exam-1"></section>
+      <section class="tab-panel" data-tab-panel="exam-2"></section>
+      <section class="tab-panel" data-tab-panel="exam-3"></section>
+    </main>
+
+    <script id="study-data" type="application/json">__QUESTION_BANK_DATA__</script>
+    <script defer src="./src/ham-study-app.js"></script>
+  </body>
+</html>
