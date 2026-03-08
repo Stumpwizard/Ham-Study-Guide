@@ -1,32 +1,70 @@
-const studyData = readStudyData();
 const questionCountPerExam = 20;
-const defaultScoreText = `Random ${questionCountPerExam} questions from ${studyData.questions.length} available`;
 const tabButtons = Array.from(document.querySelectorAll("[data-tab-target]"));
 const tabPanels = Array.from(document.querySelectorAll("[data-tab-panel]"));
-const examState = createExamSets(studyData.examConfigs, studyData.questions);
+let defaultScoreText = "";
+let examState = {};
 
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => activateTab(button.dataset.tabTarget));
 });
 
-studyData.examConfigs.forEach((config) => {
-  renderExam(config, examState[config.id]);
-});
-
 document.addEventListener("click", handleClick);
 
-function readStudyData() {
+initializeApp();
+
+async function initializeApp() {
+  try {
+    const studyData = await readStudyData();
+    defaultScoreText = `Random ${questionCountPerExam} questions from ${studyData.questions.length} available`;
+    examState = createExamSets(studyData.examConfigs, studyData.questions);
+
+    studyData.examConfigs.forEach((config) => {
+      renderExam(config, examState[config.id]);
+    });
+  } catch (error) {
+    console.error(error);
+    renderLoadError();
+  }
+}
+
+async function readStudyData() {
   const element = document.getElementById("study-data");
-  if (!element) {
-    throw new Error("Study data payload is missing.");
+  if (element) {
+    const parsed = JSON.parse(element.textContent);
+    validateStudyData(parsed);
+    return parsed;
   }
 
-  const parsed = JSON.parse(element.textContent);
+  const response = await fetch("./content/question-bank.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Unable to load study data: ${response.status} ${response.statusText}`);
+  }
+
+  const parsed = await response.json();
+  validateStudyData(parsed);
+  return parsed;
+}
+
+function validateStudyData(parsed) {
   if (!Array.isArray(parsed.examConfigs) || !Array.isArray(parsed.questions)) {
     throw new Error("Study data payload is invalid.");
   }
+}
 
-  return parsed;
+function renderLoadError() {
+  const panel = document.querySelector('[data-tab-panel="guide"]');
+  if (!panel) {
+    return;
+  }
+
+  panel.innerHTML = `
+    <div class="guide-grid">
+      <article class="card prose">
+        <h2>Unable to Load Study Data</h2>
+        <p>The question bank could not be loaded. Refresh the page or verify that <code>content/question-bank.json</code> is being served.</p>
+      </article>
+    </div>
+  `;
 }
 
 function createExamSets(examConfigs, questionBank) {

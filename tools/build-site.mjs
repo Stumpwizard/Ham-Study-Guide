@@ -5,28 +5,36 @@ import { fileURLToPath } from "node:url";
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteDir = path.join(rootDir, "site");
 const publicDir = path.join(rootDir, "public");
+const siteContentDir = path.join(siteDir, "content");
 const siteSrcDir = path.join(siteDir, "src");
+const publicContentDir = path.join(publicDir, "content");
 const publicSrcDir = path.join(publicDir, "src");
 
 const [htmlTemplate, css, js, questionBank] = await Promise.all([
   readFile(path.join(siteDir, "index.html"), "utf8"),
   readFile(path.join(siteSrcDir, "ham-study.css"), "utf8"),
   readFile(path.join(siteSrcDir, "ham-study-app.js"), "utf8"),
-  readFile(path.join(siteDir, "content", "question-bank.json"), "utf8"),
+  readFile(path.join(siteContentDir, "question-bank.json"), "utf8"),
 ]);
 
-const renderedHtml = htmlTemplate.replace(
-  "__QUESTION_BANK_DATA__",
-  escapeInlineJson(questionBank.trim())
-);
+const renderedHtml = htmlTemplate
+  .replaceAll("../Stumpwizard.png", "./Stumpwizard.png")
+  .replace(
+    '<script defer src="./src/ham-study-app.js"></script>',
+    `    <script id="study-data" type="application/json">${escapeInlineJson(questionBank.trim())}</script>\n    <script defer src="./src/ham-study-app.js"></script>`
+  );
 
 await rm(publicDir, { recursive: true, force: true });
-await mkdir(publicSrcDir, { recursive: true });
+await Promise.all([
+  mkdir(publicSrcDir, { recursive: true }),
+  mkdir(publicContentDir, { recursive: true }),
+]);
 
 await Promise.all([
   writeFile(path.join(publicDir, "index.html"), `${renderedHtml}\n`),
   writeFile(path.join(publicSrcDir, "ham-study.css"), css),
   writeFile(path.join(publicSrcDir, "ham-study-app.js"), js),
+  copyFile(path.join(siteContentDir, "question-bank.json"), path.join(publicContentDir, "question-bank.json")),
   writeFile(path.join(publicDir, ".nojekyll"), ""),
   copyFile(path.join(rootDir, "Stumpwizard.png"), path.join(publicDir, "Stumpwizard.png")),
 ]);
