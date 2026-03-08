@@ -813,6 +813,236 @@ window.scoreExamById = function(id) {
   return false;
 };
 
+function initializeOhmsLawCalculator() {
+  injectOhmsLawStyles();
+
+  const figure = document.querySelector('.ohms-law-figure');
+  if (!figure || document.querySelector('[data-ohms-calculator]')) {
+    return;
+  }
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'ohms-law-calculator';
+  wrapper.setAttribute('data-ohms-calculator', 'true');
+  wrapper.innerHTML = 
+    <h4>Ohm's Law Calculator</h4>
+    <p>Enter any two values to solve the other electrical quantities.</p>
+    <div class="ohms-law-fields">
+      <div class="ohms-law-field">
+        <label for="ohms-voltage">Voltage (V)</label>
+        <input id="ohms-voltage" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="voltage" />
+      </div>
+      <div class="ohms-law-field">
+        <label for="ohms-current">Current (I)</label>
+        <input id="ohms-current" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="current" />
+      </div>
+      <div class="ohms-law-field">
+        <label for="ohms-resistance">Resistance (R)</label>
+        <input id="ohms-resistance" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="resistance" />
+      </div>
+      <div class="ohms-law-field">
+        <label for="ohms-power">Power (P)</label>
+        <input id="ohms-power" type="number" step="any" min="0" inputmode="decimal" data-ohms-input="power" />
+      </div>
+    </div>
+    <div class="ohms-law-actions">
+      <button class="action-button primary" type="button" onclick="window.solveOhmsLaw(); return false;">Calculate</button>
+      <button class="action-button secondary" type="button" onclick="window.clearOhmsLaw(); return false;">Clear</button>
+    </div>
+    <p class="ohms-law-result" data-ohms-result>Enter two known values such as voltage and resistance.</p>
+  ;
+
+  figure.insertAdjacentElement('afterend', wrapper);
+}
+
+function injectOhmsLawStyles() {
+  if (document.getElementById('ohms-law-calculator-styles')) {
+    return;
+  }
+
+  const style = document.createElement('style');
+  style.id = 'ohms-law-calculator-styles';
+  style.textContent = 
+    .ohms-law-calculator {
+      margin: 14px 0 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+    .ohms-law-calculator h4,
+    .ohms-law-calculator p {
+      margin-top: 0;
+    }
+    .ohms-law-calculator h4 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .ohms-law-calculator p {
+      margin-bottom: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .ohms-law-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .ohms-law-field {
+      display: grid;
+      gap: 6px;
+    }
+    .ohms-law-field label {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .ohms-law-field input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fffdf8;
+    }
+    .ohms-law-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .ohms-law-result {
+      min-height: 1.4em;
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+  ;
+  document.head.appendChild(style);
+}
+
+function solveOhmsLaw() {
+  const inputs = {
+    voltage: readOhmsValue('voltage'),
+    current: readOhmsValue('current'),
+    resistance: readOhmsValue('resistance'),
+    power: readOhmsValue('power')
+  };
+  const knownValues = Object.keys(inputs).filter(function(key) {
+    return inputs[key] !== null;
+  });
+  const result = document.querySelector('[data-ohms-result]');
+
+  if (knownValues.length !== 2) {
+    result.textContent = 'Enter exactly two values so the calculator can solve the rest.';
+    return false;
+  }
+
+  const solved = computeOhmsLaw(inputs);
+  if (!solved) {
+    result.textContent = 'Those values do not form a valid positive Ohm\'s Law combination.';
+    return false;
+  }
+
+  writeOhmsValue('voltage', solved.voltage);
+  writeOhmsValue('current', solved.current);
+  writeOhmsValue('resistance', solved.resistance);
+  writeOhmsValue('power', solved.power);
+  result.textContent = 'Solved using Ohm\'s Law and the power equations.';
+  return false;
+}
+
+function clearOhmsLaw() {
+  ['voltage', 'current', 'resistance', 'power'].forEach(function(key) {
+    const input = document.querySelector('[data-ohms-input="' + key + '"]');
+    if (input) {
+      input.value = '';
+    }
+  });
+  const result = document.querySelector('[data-ohms-result]');
+  if (result) {
+    result.textContent = 'Enter two known values such as voltage and resistance.';
+  }
+  return false;
+}
+
+function readOhmsValue(key) {
+  const input = document.querySelector('[data-ohms-input="' + key + '"]');
+  if (!input) {
+    return null;
+  }
+  const rawValue = input.value.trim();
+  if (!rawValue) {
+    return null;
+  }
+  const parsed = Number(rawValue);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    return null;
+  }
+  return parsed;
+}
+
+function writeOhmsValue(key, value) {
+  const input = document.querySelector('[data-ohms-input="' + key + '"]');
+  if (input) {
+    input.value = formatOhmsValue(value);
+  }
+}
+
+function formatOhmsValue(value) {
+  const rounded = value >= 100 ? value.toFixed(2) : value.toFixed(4);
+  return String(Number(rounded));
+}
+
+function computeOhmsLaw(values) {
+  const v = values.voltage;
+  const i = values.current;
+  const r = values.resistance;
+  const p = values.power;
+
+  if (v !== null && i !== null) {
+    return finalizeOhmsSolution(v, i, v / i, v * i);
+  }
+  if (v !== null && r !== null) {
+    return finalizeOhmsSolution(v, v / r, r, (v * v) / r);
+  }
+  if (v !== null && p !== null) {
+    const current = p / v;
+    return finalizeOhmsSolution(v, current, v / current, p);
+  }
+  if (i !== null && r !== null) {
+    return finalizeOhmsSolution(i * r, i, r, i * i * r);
+  }
+  if (i !== null && p !== null) {
+    const voltage = p / i;
+    return finalizeOhmsSolution(voltage, i, voltage / i, p);
+  }
+  if (r !== null && p !== null) {
+    const current = Math.sqrt(p / r);
+    return finalizeOhmsSolution(current * r, current, r, p);
+  }
+  return null;
+}
+
+function finalizeOhmsSolution(voltage, current, resistance, power) {
+  const values = [voltage, current, resistance, power];
+  const allValid = values.every(function(value) {
+    return Number.isFinite(value) && value > 0;
+  });
+
+  if (!allValid) {
+    return null;
+  }
+
+  return {
+    voltage: voltage,
+    current: current,
+    resistance: resistance,
+    power: power
+  };
+}
+
+initializeOhmsLawCalculator();
+window.solveOhmsLaw = solveOhmsLaw;
+window.clearOhmsLaw = clearOhmsLaw;
 window.resetExamById = function(id) {
   const panel = document.querySelector('[data-tab-panel="' + id + '"]');
   if (panel) {
@@ -823,6 +1053,9 @@ window.resetExamById = function(id) {
     </script>
   </body>
 </html>
+
+
+
 
 
 
