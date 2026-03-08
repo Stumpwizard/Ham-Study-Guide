@@ -1,5 +1,11 @@
 # Stumpwizards Ham Study Guide
 
+## Live App
+
+Open the study guide in your browser here:
+
+[https://stumpwizard.github.io/Ham-Study-Guide/](https://stumpwizard.github.io/Ham-Study-Guide/)
+
 This project contains the ham radio operator study guide deliverables for Windows and browser use.
 
 ## Files
@@ -11,7 +17,7 @@ This project contains the ham radio operator study guide deliverables for Window
 
 ## Browser Use
 
-Open `study-guide.html` in a modern browser. It includes the study content, an Ohm's Law graphic, and randomized 20-question exams drawn from a 100-question bank.
+Use the live GitHub Pages app at [https://stumpwizard.github.io/Ham-Study-Guide/](https://stumpwizard.github.io/Ham-Study-Guide/) or open `study-guide.html` in a modern browser locally. It includes the study content, an Ohm's Law graphic, calculator, and randomized 20-question exams drawn from a 100-question bank.
 
 ## GitHub Pages
 
