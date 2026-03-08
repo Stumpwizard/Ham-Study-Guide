@@ -387,9 +387,9 @@ h3 {
 
       <nav class="tab-list" aria-label="Sections">
         <button class="tab-button is-active" type="button" data-tab-target="guide" onclick="window.activateStudyTab('guide'); return false;">Study Guide</button>
-        <button class="tab-button" type="button" data-tab-target="exam-1" onclick="window.activateStudyTab('exam-1'); return false;">Exam 1</button>
-        <button class="tab-button" type="button" data-tab-target="exam-2" onclick="window.activateStudyTab('exam-2'); return false;">Exam 2</button>
-        <button class="tab-button" type="button" data-tab-target="exam-3" onclick="window.activateStudyTab('exam-3'); return false;">Exam 3</button>
+        <button class="tab-button" type="button" data-tab-target="exam-1" onclick="window.activateStudyTab('exam-1'); return false;">Technician</button>
+        <button class="tab-button" type="button" data-tab-target="exam-2" onclick="window.activateStudyTab('exam-2'); return false;">General</button>
+        <button class="tab-button" type="button" data-tab-target="exam-3" onclick="window.activateStudyTab('exam-3'); return false;">Amateur Extra</button>
       </nav>
 
       <section class="tab-panel is-active" data-tab-panel="guide">
@@ -658,9 +658,9 @@ const rawQuestionBank = [
 const questionBank = rawQuestionBank.slice(0, 100);
 
 const examConfigs = [
-  { id: "exam-1", title: "Exam 1", description: "Randomized technician and operating practice review." },
-  { id: "exam-2", title: "Exam 2", description: "Randomized propagation, circuits, and station setup review." },
-  { id: "exam-3", title: "Exam 3", description: "Randomized mixed review from the full 100-question bank." }
+  { id: "exam-1", title: "Technician Exam", description: "Technician license review covering rules, repeaters, electronics basics, and station practice." },
+  { id: "exam-2", title: "General Exam", description: "General license review focused on HF operation, propagation, circuits, and station setup." },
+  { id: "exam-3", title: "Amateur Extra Exam", description: "Amateur Extra style mixed review using the full question bank for broad concept practice." }
 ];
 
 const guideTarget = document.querySelector("[data-guide-content]");
@@ -1056,6 +1056,7 @@ window.clearOhmsLaw = clearOhmsLaw;window.resetExamById = function(id) {
     </script>
   </body>
 </html>
+
 
 
 
