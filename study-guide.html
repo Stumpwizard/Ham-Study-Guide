@@ -824,7 +824,7 @@ function initializeOhmsLawCalculator() {
   const wrapper = document.createElement('div');
   wrapper.className = 'ohms-law-calculator';
   wrapper.setAttribute('data-ohms-calculator', 'true');
-  wrapper.innerHTML = 
+  wrapper.innerHTML = `
     <h4>Ohm's Law Calculator</h4>
     <p>Enter any two values to solve the other electrical quantities.</p>
     <div class="ohms-law-fields">
@@ -850,7 +850,7 @@ function initializeOhmsLawCalculator() {
       <button class="action-button secondary" type="button" onclick="window.clearOhmsLaw(); return false;">Clear</button>
     </div>
     <p class="ohms-law-result" data-ohms-result>Enter two known values such as voltage and resistance.</p>
-  ;
+  `;
 
   figure.insertAdjacentElement('afterend', wrapper);
 }
@@ -862,7 +862,7 @@ function injectOhmsLawStyles() {
 
   const style = document.createElement('style');
   style.id = 'ohms-law-calculator-styles';
-  style.textContent = 
+  style.textContent = `
     .ohms-law-calculator {
       margin: 14px 0 18px;
       padding: 14px;
@@ -915,7 +915,7 @@ function injectOhmsLawStyles() {
       color: var(--muted);
       line-height: 1.4;
     }
-  ;
+  `;
   document.head.appendChild(style);
 }
 
@@ -930,6 +930,10 @@ function solveOhmsLaw() {
     return inputs[key] !== null;
   });
   const result = document.querySelector('[data-ohms-result]');
+
+  if (!result) {
+    return false;
+  }
 
   if (knownValues.length !== 2) {
     result.textContent = 'Enter exactly two values so the calculator can solve the rest.';
@@ -1042,8 +1046,7 @@ function finalizeOhmsSolution(voltage, current, resistance, power) {
 
 initializeOhmsLawCalculator();
 window.solveOhmsLaw = solveOhmsLaw;
-window.clearOhmsLaw = clearOhmsLaw;
-window.resetExamById = function(id) {
+window.clearOhmsLaw = clearOhmsLaw;window.resetExamById = function(id) {
   const panel = document.querySelector('[data-tab-panel="' + id + '"]');
   if (panel) {
     resetExam(panel);
@@ -1053,6 +1056,7 @@ window.resetExamById = function(id) {
     </script>
   </body>
 </html>
+
 
 
 
