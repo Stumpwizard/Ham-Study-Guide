@@ -9,6 +9,7 @@ This repository contains the browser-based ham radio study guide deployed to Git
 ## Browser App
 
 - Source HTML lives in `site/index.html`
+- Source image assets live in `site/`
 - Source styles live in `site/src/ham-study.css`
 - Source browser logic lives in `site/src/ham-study-app.js`
 - Study questions and exam metadata live in `site/content/question-bank.json`
