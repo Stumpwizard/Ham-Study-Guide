@@ -41,7 +41,7 @@ select {
 }
 
 textarea,
-input {
+input:not([type='radio']) {
   width: 100%;
 }
 
@@ -397,6 +397,7 @@ h3 {
 
 .option-item input {
   flex: 0 0 auto;
+  width: auto;
   margin-top: 3px;
 }
 
@@ -438,7 +439,7 @@ h3 {
   }
 
   .guide-grid {
-    grid-template-columns: minmax(0, 1.8fr) minmax(320px, 0.95fr);
+    grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.9fr);
     gap: 20px;
   }
 
@@ -474,3 +475,5 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+
+
