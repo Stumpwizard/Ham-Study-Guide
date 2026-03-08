@@ -39,7 +39,9 @@ await Promise.all([
 
 await Promise.all([
   writeFile(path.join(rootDir, "index.html"), `${rootHtml}\n`),
+  writeFile(path.join(rootDir, "404.html"), `${rootHtml}\n`),
   writeFile(path.join(publicDir, "index.html"), `${renderedHtml}\n`),
+  writeFile(path.join(publicDir, "404.html"), `${renderedHtml}\n`),
   writeFile(path.join(publicSrcDir, "ham-study.css"), css),
   writeFile(path.join(publicSrcDir, "ham-study-app.js"), js),
   copyFile(path.join(siteContentDir, "question-bank.json"), path.join(publicContentDir, "question-bank.json")),
