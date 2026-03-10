@@ -1,4 +1,4 @@
-﻿const questionCountPerExam = 35;
+const questionCountPerExam = 35;
 const maxIncorrectToPass = 9;
 const passingCorrectCount = questionCountPerExam - maxIncorrectToPass;
 const defaultRulesQuestionTarget = 12;
@@ -193,15 +193,17 @@ function renderExam(config, questions) {
           <h2>${config.title}</h2>
           <p>${config.description}</p>
           <p class="exam-meta">${questionCountPerExam} random questions with extra FCC rules coverage. Pass with no more than ${maxIncorrectToPass} missed.</p>
+          <output class="score-output" data-score-output aria-live="polite" tabindex="-1">${defaultScoreText}</output>
         </div>
         <div class="exam-actions">
-          <button class="action-button primary" type="button" data-exam-action="score">Score Exam</button>
           <button class="action-button secondary" type="button" data-exam-action="reset">Reset Answers</button>
           <button class="action-button secondary" type="button" data-exam-action="regenerate">New Random Exam</button>
-          <output class="score-output" data-score-output aria-live="polite">${defaultScoreText}</output>
         </div>
       </div>
       <div class="question-list" data-question-list></div>
+      <div class="exam-footer-actions">
+        <button class="action-button primary" type="button" data-exam-action="score">Score Test</button>
+      </div>
     </div>
   `;
 
@@ -315,6 +317,8 @@ function scoreExam(panel, questions) {
   scoreOutput.classList.add(passed ? "is-pass" : "is-fail");
   scoreOutput.textContent =
     `${passed ? "PASS" : "FAIL"} | Score ${correct}/${questions.length} | Incorrect ${incorrect}/${questions.length} | Answered ${answered}/${questions.length} | ${percent}%`;
+  scoreOutput.focus();
+  scoreOutput.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function resetExam(panel) {
