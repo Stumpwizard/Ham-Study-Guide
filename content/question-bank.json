@@ -17,6 +17,14 @@
                             "title":  "Amateur Extra Exam",
                             "rulesTarget":  12,
                             "description":  "35-question Amateur Extra style mixed review using the expanded bank for broad concept practice and FCC rules review."
+                        },
+                        {
+                            "id":  "exam-electronics",
+                            "title":  "Electronics Practice Exam",
+                            "rulesTarget":  0,
+                            "questionPool":  "electronics",
+                            "metaText":  "35 random electronics questions covering circuits, components, antennas, feed lines, RF behavior, propagation, and electrical safety. Pass with no more than 9 missed.",
+                            "description":  "Dedicated electronics-only practice exam drawn from the ham study bank topics that apply across the license syllabus."
                         }
                     ],
     "questions":  [
@@ -1461,3 +1469,5 @@
                       }
                   ]
 }
+
+

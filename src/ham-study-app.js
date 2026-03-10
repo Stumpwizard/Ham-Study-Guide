@@ -2,7 +2,7 @@ const questionCountPerExam = 35;
 const maxIncorrectToPass = 9;
 const passingCorrectCount = questionCountPerExam - maxIncorrectToPass;
 const defaultRulesQuestionTarget = 12;
-const assetVersion = '20260308b';
+const assetVersion = '20260310a';
 const rulesKeywords = [
   "fcc",
   "call sign",
@@ -25,9 +25,69 @@ const rulesKeywords = [
   "obscene",
   "indecent"
 ];
+const electronicsKeywords = [
+  "ohm",
+  "voltage",
+  "current",
+  "resistance",
+  "power",
+  "watt",
+  "amp",
+  "capacitor",
+  "inductor",
+  "diode",
+  "transistor",
+  "resistor",
+  "circuit",
+  "rf",
+  "impedance",
+  "swr",
+  "feed line",
+  "coax",
+  "antenna",
+  "wavelength",
+  "propagation",
+  "field",
+  "transformer",
+  "fuse",
+  "ground",
+  "filter",
+  "oscillator",
+  "modulation",
+  "reactance",
+  "inductance",
+  "capacitance",
+  "dummy load",
+  "line-of-sight",
+  "skywave",
+  "ionosphere",
+  "harmonic",
+  "standing wave",
+  "attenuation"
+];
+const electronicsExcludeKeywords = [
+  "fcc",
+  "call sign",
+  "identify",
+  "identification",
+  "privileges",
+  "control operator",
+  "phonetics",
+  "repeater",
+  "ctcss",
+  "band plan",
+  "business",
+  "pecuniary",
+  "third party",
+  "third-party",
+  "obscene",
+  "profane",
+  "courtesy",
+  "listen first",
+  "operating"
+];
 const tabButtons = Array.from(document.querySelectorAll("[data-tab-target]"));
 const tabPanels = Array.from(document.querySelectorAll("[data-tab-panel]"));
-let defaultScoreText = "";
 let examState = {};
 let questionBank = [];
 let examConfigsById = {};
@@ -45,7 +105,6 @@ async function initializeApp() {
     const studyData = await readStudyData();
     questionBank = studyData.questions;
     examConfigsById = Object.fromEntries(studyData.examConfigs.map((config) => [config.id, config]));
-    defaultScoreText = buildDefaultScoreText(questionBank.length);
     examState = createExamSets(studyData.examConfigs, studyData.questions);
 
     studyData.examConfigs.forEach((config) => {
@@ -114,9 +173,14 @@ function createExamSets(examConfigs, allQuestions) {
 }
 
 function buildExamQuestionSet(allQuestions, config) {
-  const rulesQuestions = shuffleArray(allQuestions.filter(isRulesQuestion));
-  const otherQuestions = shuffleArray(allQuestions.filter((question) => !isRulesQuestion(question)));
-  const fallbackQuestions = shuffleArray(allQuestions.slice());
+  const questionPool = getQuestionPool(allQuestions, config);
+  if (questionPool.length < questionCountPerExam) {
+    throw new Error(`Unable to build ${config.title} because only ${questionPool.length} matching questions were found.`);
+  }
+
+  const rulesQuestions = shuffleArray(questionPool.filter(isRulesQuestion));
+  const otherQuestions = shuffleArray(questionPool.filter((question) => !isRulesQuestion(question)));
+  const fallbackQuestions = shuffleArray(questionPool.slice());
   const rulesTarget = Math.min(config.rulesTarget ?? defaultRulesQuestionTarget, questionCountPerExam);
   const selected = [];
   const usedPrompts = new Set();
@@ -130,6 +194,14 @@ function buildExamQuestionSet(allQuestions, config) {
   }
 
   return shuffleArray(selected.slice());
+}
+
+function getQuestionPool(allQuestions, config) {
+  if (config.questionPool === "electronics") {
+    return allQuestions.filter(isElectronicsQuestion);
+  }
+
+  return allQuestions;
 }
 
 function collectQuestions(selected, usedPrompts, candidates, neededCount) {
@@ -153,8 +225,19 @@ function isRulesQuestion(question) {
     return true;
   }
 
-  const promptAndOptions = `${question.prompt} ${Object.values(question.options).join(" ")}`.toLowerCase();
+  const promptAndOptions = getQuestionSearchText(question);
   return rulesKeywords.some((keyword) => promptAndOptions.includes(keyword));
+}
+
+function isElectronicsQuestion(question) {
+  const promptAndOptions = getQuestionSearchText(question);
+  const matchesElectronicsTopic = electronicsKeywords.some((keyword) => promptAndOptions.includes(keyword));
+  const matchesExcludedTopic = electronicsExcludeKeywords.some((keyword) => promptAndOptions.includes(keyword));
+  return matchesElectronicsTopic && !matchesExcludedTopic;
+}
+
+function getQuestionSearchText(question) {
+  return `${question.prompt} ${Object.values(question.options).join(" ")}`.toLowerCase();
 }
 
 function shuffleArray(items) {
@@ -186,19 +269,21 @@ function renderExam(config, questions) {
     return;
   }
 
+  const defaultScoreText = buildDefaultScoreText(getQuestionPool(questionBank, config).length);
+
   panel.innerHTML = `
     <div class="exam-shell">
       <div class="exam-intro">
         <div class="exam-copy">
           <h2>${config.title}</h2>
           <p>${config.description}</p>
-          <p class="exam-meta">${questionCountPerExam} random questions with extra FCC rules coverage. Pass with no more than ${maxIncorrectToPass} missed.</p>
+          <p class="exam-meta">${config.metaText ?? `${questionCountPerExam} random questions with extra FCC rules coverage. Pass with no more than ${maxIncorrectToPass} missed.`}</p>
         </div>
         <div class="exam-actions">
           <button class="action-button secondary" type="button" data-exam-action="reset">Reset Answers</button>
           <button class="action-button secondary" type="button" data-exam-action="regenerate">New Random Exam</button>
         </div>
-        <output class="score-output" data-score-output aria-live="polite" tabindex="-1">${defaultScoreText}</output>
+        <output class="score-output" data-score-output data-default-score-text="${defaultScoreText}" aria-live="polite" tabindex="-1">${defaultScoreText}</output>
       </div>
       <div class="question-list" data-question-list></div>
       <div class="exam-footer-actions">
@@ -336,7 +421,7 @@ function resetExam(panel) {
 
   const scoreOutput = panel.querySelector("[data-score-output]");
   scoreOutput.classList.remove("is-pass", "is-fail");
-  scoreOutput.textContent = defaultScoreText;
+  scoreOutput.textContent = scoreOutput.dataset.defaultScoreText ?? "";
 }
 
 function solveOhmsLaw() {
@@ -457,5 +542,7 @@ function finalizeOhmsSolution(voltage, current, resistance, power) {
     power
   };
 }
+
+
 
 
