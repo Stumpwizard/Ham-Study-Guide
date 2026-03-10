@@ -189,16 +189,16 @@ function renderExam(config, questions) {
   panel.innerHTML = `
     <div class="exam-shell">
       <div class="exam-intro">
-        <div>
+        <div class="exam-copy">
           <h2>${config.title}</h2>
           <p>${config.description}</p>
           <p class="exam-meta">${questionCountPerExam} random questions with extra FCC rules coverage. Pass with no more than ${maxIncorrectToPass} missed.</p>
-          <output class="score-output" data-score-output aria-live="polite" tabindex="-1">${defaultScoreText}</output>
         </div>
         <div class="exam-actions">
           <button class="action-button secondary" type="button" data-exam-action="reset">Reset Answers</button>
           <button class="action-button secondary" type="button" data-exam-action="regenerate">New Random Exam</button>
         </div>
+        <output class="score-output" data-score-output aria-live="polite" tabindex="-1">${defaultScoreText}</output>
       </div>
       <div class="question-list" data-question-list></div>
       <div class="exam-footer-actions">

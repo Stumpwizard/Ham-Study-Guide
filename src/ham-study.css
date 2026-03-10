@@ -309,6 +309,10 @@ h3 {
   font-size: 0.95rem;
 }
 
+.exam-copy {
+  min-width: 0;
+}
+
 .exam-actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -343,9 +347,15 @@ h3 {
 
 .score-output {
   grid-column: 1 / -1;
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
   color: var(--muted);
   line-height: 1.4;
-  margin-top: 12px;
+  margin-top: 2px;
 }
 
 .score-output:focus {
@@ -469,15 +479,16 @@ h3 {
   }
 
   .exam-intro {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
+    column-gap: 16px;
   }
 
   .exam-actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-end;
     align-items: center;
   }
 
@@ -486,7 +497,8 @@ h3 {
   }
 
   .score-output {
-    grid-column: auto;
+    grid-column: 1 / -1;
+    margin-top: 0;
   }
 
   .question-card {
