@@ -1467,7 +1467,137 @@
                                           "D":  "Decline because obscuring the meaning of messages is generally prohibited"
                                       }
                       }
+                      ,
+                      {
+                          "prompt":  "If a 12-volt source is applied to a 4-ohm load, what current flows?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "2 amperes",
+                                          "B":  "3 amperes",
+                                          "C":  "4 amperes",
+                                          "D":  "48 amperes"
+                                      }
+                      },
+                      {
+                          "prompt":  "A circuit draws 5 amperes from a 13.8-volt power supply. About how much power is used?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "18 watts",
+                                          "B":  "27.6 watts",
+                                          "C":  "54 watts",
+                                          "D":  "69 watts"
+                                      }
+                      },
+                      {
+                          "prompt":  "If 24 volts are applied across an 8-ohm resistor, how much power is dissipated?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "3 watts",
+                                          "B":  "24 watts",
+                                          "C":  "72 watts",
+                                          "D":  "192 watts"
+                                      }
+                      },
+                      {
+                          "prompt":  "A resistor carries 2 amperes and dissipates 18 watts. What is its resistance?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "4.5 ohms",
+                                          "B":  "9 ohms",
+                                          "C":  "16 ohms",
+                                          "D":  "36 ohms"
+                                      }
+                      },
+                      {
+                          "prompt":  "If a 9-volt battery pushes 0.5 ampere through a circuit, what is the resistance?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "4.5 ohms",
+                                          "B":  "9 ohms",
+                                          "C":  "13.5 ohms",
+                                          "D":  "18 ohms"
+                                      }
+                      },
+                      {
+                          "prompt":  "Two 100-ohm resistors connected in series have what total resistance?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "50 ohms",
+                                          "B":  "100 ohms",
+                                          "C":  "200 ohms",
+                                          "D":  "400 ohms"
+                                      }
+                      },
+                      {
+                          "prompt":  "Two equal resistors connected in parallel have what total resistance compared with one resistor alone?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "Half as much resistance",
+                                          "B":  "The same resistance",
+                                          "C":  "Twice the resistance",
+                                          "D":  "Four times the resistance"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does a capacitor tend to do in a power supply filter?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "Raise the AC line frequency",
+                                          "B":  "Smooth variations in voltage",
+                                          "C":  "Create antenna gain",
+                                          "D":  "Increase feed line loss"
+                                      }
+                      },
+                      {
+                          "prompt":  "What is the basic function of an inductor in an RF circuit?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "Store energy in an electric field only",
+                                          "B":  "Block all alternating current",
+                                          "C":  "Convert RF directly to light",
+                                          "D":  "Provide inductance and store energy in a magnetic field"
+                                      }
+                      },
+                      {
+                          "prompt":  "What does a rectifier do in a DC power supply?",
+                          "answer":  "C",
+                          "options":  {
+                                          "A":  "Raises impedance for the antenna",
+                                          "B":  "Turns direct current into alternating current",
+                                          "C":  "Converts alternating current into pulsating direct current",
+                                          "D":  "Changes wavelength"
+                                      }
+                      },
+                      {
+                          "prompt":  "What usually happens to current if voltage stays the same and resistance is cut in half?",
+                          "answer":  "B",
+                          "options":  {
+                                          "A":  "It is cut in half",
+                                          "B":  "It doubles",
+                                          "C":  "It stays the same",
+                                          "D":  "It drops to zero"
+                                      }
+                      },
+                      {
+                          "prompt":  "If 3 amperes flow through a 5-ohm resistor, what voltage is present across it?",
+                          "answer":  "A",
+                          "options":  {
+                                          "A":  "15 volts",
+                                          "B":  "8 volts",
+                                          "C":  "2 volts",
+                                          "D":  "30 volts"
+                                      }
+                      },
+                      {
+                          "prompt":  "Why is a resistor with too low a power rating a problem in a circuit?",
+                          "answer":  "D",
+                          "options":  {
+                                          "A":  "It increases wavelength",
+                                          "B":  "It lowers frequency to zero",
+                                          "C":  "It prevents current from flowing at all",
+                                          "D":  "It can overheat when dissipating more power than it is rated for"
+                                      }
+                      }
                   ]
 }
-
 
