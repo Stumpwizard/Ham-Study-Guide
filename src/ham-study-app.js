@@ -313,12 +313,15 @@ function scoreExam(panel, questions) {
   const percent = Math.round((correct / questions.length) * 100);
   const passed = incorrect <= maxIncorrectToPass;
   const scoreOutput = panel.querySelector("[data-score-output]");
+  const resetButton = panel.querySelector('[data-exam-action="reset"]');
   scoreOutput.classList.remove("is-pass", "is-fail");
   scoreOutput.classList.add(passed ? "is-pass" : "is-fail");
   scoreOutput.textContent =
     `${passed ? "PASS" : "FAIL"} | Score ${correct}/${questions.length} | Incorrect ${incorrect}/${questions.length} | Answered ${answered}/${questions.length} | ${percent}%`;
-  scoreOutput.focus();
   scoreOutput.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (resetButton) {
+    resetButton.focus();
+  }
 }
 
 function resetExam(panel) {
@@ -454,4 +457,5 @@ function finalizeOhmsSolution(voltage, current, resistance, power) {
     power
   };
 }
+
 
